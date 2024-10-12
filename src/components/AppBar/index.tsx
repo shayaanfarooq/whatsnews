@@ -1,3 +1,4 @@
+import { useCategories } from '@/api/queries/useCategoriesData'
 import { Link } from 'react-router-dom'
 
 const NavLinks = () => {
@@ -7,13 +8,18 @@ const NavLinks = () => {
             <Link to='/'>Home</Link>
          </button>
          <button>
-            <Link to='/browse'>Browse</Link>
+            <Link to='/search'>Search</Link>
+         </button>
+         <button>
+            <Link to='/search'>My Feed</Link>
          </button>
       </div>
    )
 }
 
 const AppBar = () => {
+   useCategories()
+
    // const [isOpen, setIsOpen] = useState(false)
 
    // const toggleMenu = () => {

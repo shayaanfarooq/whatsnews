@@ -1,20 +1,27 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import HomePage from './routes/Home'
-import BrowsePage from './routes/Browse'
+import SearchPage from './routes/Search'
 import AppBar from './components/AppBar'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import HomePage from './routes/Home'
+
+const queryClient = new QueryClient()
 
 function App() {
    return (
-      <main className='overflow-y-auto w-full'>
+      <QueryClientProvider client={queryClient}>
          <BrowserRouter>
-            <AppBar />
-            <Routes>
-               <Route path='/' element={<HomePage />} />
-               <Route path='/browse' element={<BrowsePage />} />
-            </Routes>
+            <main className='overflow-y-auto w-full'>
+               <AppBar />
+               <Routes>
+                  <Route path='/' element={<HomePage />} />
+                  <Route path='/search' element={<SearchPage />} />
+               </Routes>
+            </main>
          </BrowserRouter>
-      </main>
+         <ReactQueryDevtools initialIsOpen={true} />
+      </QueryClientProvider>
    )
 }
 
