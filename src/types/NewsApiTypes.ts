@@ -30,4 +30,5 @@ export interface NewsApiEverythingParams {
    to?: string | undefined
    page?: number
    pageSize?: number
+   sortBy?: 'publishedAt' | 'popularity' | 'relevency'
 }

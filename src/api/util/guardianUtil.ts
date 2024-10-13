@@ -1,4 +1,4 @@
-import { format } from 'date-fns'
+import { format, subDays } from 'date-fns'
 import qs from 'qs'
 
 import { Article, ContentParams } from '@/types'
@@ -7,7 +7,7 @@ import {
    GuardianParams,
    GuardianSingleItem
 } from '@/types/GuardianApiTypes'
-import { NewsSource, PAGE_SIZE_PER_REQUEST } from '@/util/constants'
+import { NewsSource, PAGE_SIZE_FOR_TOP_STORIES, PAGE_SIZE_PER_REQUEST } from '@/util/constants'
 
 const GUARDIAN_API_KEY = import.meta.env.VITE_GUARDIAN_API_KEY
 
@@ -18,6 +18,20 @@ export const parseToGuardianParams = ({ search, categories, date, page }: Conten
       page: page,
       'page-size': PAGE_SIZE_PER_REQUEST,
       'to-date': date ? format(date, 'yyyy-MM-dd') : undefined,
+      'api-key': GUARDIAN_API_KEY,
+      'show-tags': 'contributor',
+      'show-fields': 'body,thumbnail'
+   }
+
+   return qs.stringify(params)
+}
+
+export const parseToTopStoriesGuardianParams = () => {
+   const params: GuardianParams = {
+      page: 1,
+      'page-size': PAGE_SIZE_FOR_TOP_STORIES,
+      'to-date': format(new Date(), 'yyyy-MM-dd'),
+      'from-date': format(subDays(new Date(), 1), 'yyyy-MM-dd'),
       'api-key': GUARDIAN_API_KEY,
       'show-tags': 'contributor',
       'show-fields': 'body,thumbnail'

@@ -1,11 +1,20 @@
-import { format } from 'date-fns'
+import { format, subDays } from 'date-fns'
 import qs from 'qs'
 
 import { Article, ContentParams } from '@/types'
 import { NewApiResponse, NewsApiEverythingParams } from '@/types/NewsApiTypes'
-import { NewsSource, PAGE_SIZE_PER_REQUEST } from '@/util/constants'
+import { NewsSource, PAGE_SIZE_FOR_TOP_STORIES, PAGE_SIZE_PER_REQUEST } from '@/util/constants'
 
 const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
+export const newsApiCategories = [
+   'business',
+   'entertainment',
+   'general',
+   'health',
+   'science',
+   'sports',
+   'technology'
+]
 
 // converts params to params for news api
 export const parseToNewsApiParams = ({ search, categories, date, page }: ContentParams) => {
@@ -22,6 +31,28 @@ export const parseToNewsApiParams = ({ search, categories, date, page }: Content
    return qs.stringify(params)
 }
 
+// returns params when doing single item search via /everything api
+export const parseToSingleNewsApiParams = (id: string) => {
+   const query: NewsApiEverythingParams = {
+      q: id,
+      searchIn: 'title',
+      apiKey: NEWS_API_KEY
+   }
+   return qs.stringify(query)
+}
+
+export const parseToTopStoriesParams = () => {
+   const query: NewsApiEverythingParams = {
+      q: newsApiCategories.join(' OR '), // combining all categorie
+      from: format(subDays(new Date(), 30), 'yyyy-MM-dd'), // yesterday
+      to: format(new Date(), 'yyyy-MM-dd'), // today
+      apiKey: NEWS_API_KEY,
+      pageSize: PAGE_SIZE_FOR_TOP_STORIES,
+      sortBy: 'publishedAt'
+   }
+   return qs.stringify(query)
+}
+
 // converts news api response to common Article type
 export const convertNewsApiEverythingResToAritcle = (data: NewApiResponse): Article[] => {
    return data.articles.map((article) => ({
@@ -35,14 +66,4 @@ export const convertNewsApiEverythingResToAritcle = (data: NewApiResponse): Arti
       source: article.source.name,
       fullStory: article.url
    }))
-}
-
-// returns params when doing single item search via /everything api
-export const parseForSingleNewsApiArticle = (id: string) => {
-   const query: NewsApiEverythingParams = {
-      q: id,
-      searchIn: 'title',
-      apiKey: NEWS_API_KEY
-   }
-   return qs.stringify(query)
 }

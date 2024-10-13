@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-import { getCommonGuardianParams, parseToGuardianParams } from '../util/guardianUtil'
+import {
+   getCommonGuardianParams,
+   parseToGuardianParams,
+   parseToTopStoriesGuardianParams
+} from '../util/guardianUtil'
 import { ContentParams } from '@/types'
 import {
    GuardianContentResponse,
@@ -20,6 +24,14 @@ export const fetchGuardianSections = async () => {
 // list via search
 export const fetchGuardianContent = async (params: ContentParams) => {
    const queryString = parseToGuardianParams(params)
+   console.log('query string', queryString)
+   const url = `https://content.guardianapis.com/search?${queryString}`
+   const response = await axios.get<{ response: GuardianContentResponse }>(url)
+   return response.data.response
+}
+
+export const fetchGuardianTopStories = async () => {
+   const queryString = parseToTopStoriesGuardianParams()
    console.log('query string', queryString)
    const url = `https://content.guardianapis.com/search?${queryString}`
    const response = await axios.get<{ response: GuardianContentResponse }>(url)

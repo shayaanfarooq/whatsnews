@@ -1,7 +1,7 @@
 import { useAtomValue, useSetAtom } from 'jotai'
 
 import ArticleResult from './ArticleListItem'
-import { useAllNewsData } from '@/api/queries/useAllNewsData'
+import { useSearchedNewsData } from '@/api/queries/useAllNewsData'
 import {
    contentParamsAtom,
    selectedSourcesAtom,
@@ -15,7 +15,7 @@ const ArticleList = () => {
    const contentParams = useAtomValue(contentParamsAtom)
    const updateParams = useSetAtom(updateContentParamsAtom)
 
-   const { data, isLoading, isError, isPending } = useAllNewsData(sources, {
+   const { data, isLoading, isError, isPending } = useSearchedNewsData(sources, {
       ...contentParams
    })
 

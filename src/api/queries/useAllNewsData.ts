@@ -10,7 +10,7 @@ import { GuardianContentResponse } from '@/types/GuardianApiTypes'
 import { NewApiResponse } from '@/types/NewsApiTypes'
 import { NewsSource, defaultSources } from '@/util/constants'
 
-export const useAllNewsData = (sources: string[], params: ContentParams) => {
+export const useSearchedNewsData = (sources: string[], params: ContentParams) => {
    const enabled = !!params.categories || !!params.search
    const finalSources = sources.length === 0 ? defaultSources : sources
    return useQueries({

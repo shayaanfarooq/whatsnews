@@ -39,8 +39,8 @@ const AppBar = () => {
    return (
       <nav className='bg-zinc-900 top-0 sticky z-50 h-[64px] px-4'>
          <div className='container mx-auto max-w-4xl py-4 flex justify-between items-center h-full'>
-            <div className='uppercase text-zinc-50 text-xl font-extrabold'>
-               <NavLink to='/'>WhatsNews</NavLink>
+            <div className='uppercase text-zinc-50 text-3xl font-extrabold'>
+               <NavLink to='/'>W.</NavLink>
             </div>
 
             <div className='flex gap-2'>

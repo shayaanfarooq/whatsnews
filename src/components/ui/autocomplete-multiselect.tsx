@@ -130,7 +130,7 @@ export function MultiSelectCombobox({
                         Clear All
                      </Button>
                   )}
-                  <Button variant='default' size='sm' onClick={handleApply}>
+                  <Button variant='primary' size='sm' onClick={handleApply}>
                      Apply
                   </Button>
                </div>
