@@ -9,6 +9,22 @@ export interface GuardianParams {
    'page-size'?: number
    section?: string
    'show-tags'?: string
+   'show-fields'?: string
+}
+
+// Fields - requested by show-fields
+export interface GuardianFields {
+   /* limiting score here- there are more */
+   body: string
+   thumbnail: string
+   headline: string
+}
+
+// Tags - requested by show-tags
+export interface GuardianTag {
+   /* limiting score here- there are more */
+   id: string
+   webTitle: string
 }
 
 // Content
@@ -23,11 +39,8 @@ export interface GuardianContentResult {
    isHosted: false
    pillarId: string
    pillarName: string
-   tags: {
-      // * limiting scope here - just going to fetch contributor
-      id: 'profile/rowena-mason'
-      webTitle: 'Rowena Mason'
-   }[]
+   tags: GuardianTag[]
+   fields: GuardianFields
 }
 
 export interface GuardianContentResponse {
@@ -61,4 +74,26 @@ export interface GuardianSectionResponse {
          code: string
       }[]
    }[]
+}
+
+// Single Item
+export interface GuardianSingleItem {
+   status: string
+   userTier: string
+   total: number
+   content: {
+      id: string
+      type: string
+      sectionId: string
+      sectionName: string
+      webPublicationDate: string
+      webTitle: string
+      webUrl: string
+      apiUrl: string
+      isHosted: boolean
+      pillarId: string
+      pillarName: string
+      tags: GuardianTag[]
+      fields: GuardianFields
+   }
 }

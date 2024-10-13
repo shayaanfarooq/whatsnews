@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
-import { contentParamsAtom, updateContentParamsAtom } from '@/atoms/searchAtoms'
+import { contentParamsAtom, updateContentParamsAtom } from '@/atoms/filterAtoms'
 
 const SearchBar = () => {
    const { search } = useAtomValue(contentParamsAtom)

@@ -1,7 +1,12 @@
 export enum NewsSource {
-   NewsApi = 'News Api',
-   Guardian = 'Guardian',
+   NewsApi = 'newsapi',
+   Guardian = 'guardian',
    NewYorkTimes = 'New York Times'
+}
+export const newsSourceLabels = {
+   [NewsSource.NewsApi]: 'News Api',
+   [NewsSource.Guardian]: 'Guardian',
+   [NewsSource.NewYorkTimes]: 'New York Times'
 }
 
 export const defaultSources: string[] = [NewsSource.NewsApi, NewsSource.Guardian]

@@ -6,7 +6,7 @@ import {
    contentParamsAtom,
    selectedSourcesAtom,
    updateContentParamsAtom
-} from '@/atoms/searchAtoms'
+} from '@/atoms/filterAtoms'
 import PaginationControl from '@/components/ui/pagination-control'
 import { articlesSorter } from '@/util/sort'
 
@@ -32,7 +32,7 @@ const ArticleList = () => {
    }
 
    return (
-      <div className='m-auto max-w-[650px] py-4 flex flex-col gap-4'>
+      <div className='m-auto max-w-4xl py-4 flex flex-col gap-4'>
          {!isPending && (
             <div className='flex w-full justify-between items center'>
                <div className='text-xl w-full text-left font-extrabold uppercase'>Results</div>

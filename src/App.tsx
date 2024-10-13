@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import AppBar from './components/AppBar'
+import ArticlePage from './routes/Article'
 import HomePage from './routes/Home'
 import SearchPage from './routes/Search'
 
@@ -17,7 +18,8 @@ function App() {
                <AppBar />
                <Routes>
                   <Route path='/' element={<HomePage />} />
-                  <Route path='/search' element={<SearchPage />} />
+                  <Route path='/search/*' element={<SearchPage />} />
+                  <Route path='/search/:api/*' element={<ArticlePage />} />
                </Routes>
             </main>
          </BrowserRouter>

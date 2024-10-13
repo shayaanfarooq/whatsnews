@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { fetchGuardianSections } from '../client/guardianApi'
+import { fetchGuardianSections } from '../client/guardianClient'
 import { queryKeys } from '../util/queryKeys'
 
 // using guardians api to fetch list of categories
