@@ -1,13 +1,15 @@
-import { Article, ContentParams } from '@/types'
-import { GuardianContentResponse, GuardianParams } from '@/types/GuardianApiTypes'
-import { PAGE_SIZE_PER_REQUEST } from '@/util/constants'
 import { format } from 'date-fns'
 import qs from 'qs'
+
+import { Article, ContentParams } from '@/types'
+import { GuardianContentResponse, GuardianParams } from '@/types/GuardianApiTypes'
+import { NewsSource, PAGE_SIZE_PER_REQUEST } from '@/util/constants'
 
 const GUARDIAN_API_KEY = import.meta.env.VITE_GUARDIAN_API_KEY
 
 export const convertGuardianContentToArticle = (data: GuardianContentResponse): Article[] => {
    return data.results.map((result) => ({
+      api: NewsSource.Guardian,
       author: result.tags[0]?.webTitle ?? '',
       content: '',
       date: result.webPublicationDate,

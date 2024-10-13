@@ -1,5 +1,6 @@
 import { GuardianContentResponse } from './GuardianApiTypes'
 import { NewApiResponse } from './NewsApiTypes'
+import { NewsSource } from '@/util/constants'
 
 export interface ContentParams {
    search?: string
@@ -11,6 +12,7 @@ export interface ContentParams {
 export type ContentResponse = NewApiResponse | GuardianContentResponse
 
 export interface Article {
+   api: NewsSource
    author: string
    imageUrl: string
    title: string

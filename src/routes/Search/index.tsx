@@ -1,8 +1,9 @@
+import { format } from 'date-fns'
+import { useAtomValue } from 'jotai'
+
 import { useAllNewsData } from '@/api/queries/useAllNewsData'
 import { contentParamsAtom, selectedSourcesAtom } from '@/atoms/searchAtoms'
 import FilterControl from '@/components/FilterControl'
-import { format } from 'date-fns'
-import { useAtomValue } from 'jotai'
 
 const Search = () => {
    const sources = useAtomValue(selectedSourcesAtom)

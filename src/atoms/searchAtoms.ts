@@ -1,6 +1,7 @@
+import { atom } from 'jotai'
+
 import { ContentParams } from '@/types'
 import { defaultSources } from '@/util/constants'
-import { atom } from 'jotai'
 
 const contentParamsAtom = atom<ContentParams>({ page: 1 })
 

@@ -1,5 +1,6 @@
-import { useCategoriesData } from '@/api/queries/useCategoriesData'
 import { Link, NavLink } from 'react-router-dom'
+
+import { useCategoriesData } from '@/api/queries/useCategoriesData'
 import { Button } from '@/components/ui/button'
 
 const NavLinks = () => {

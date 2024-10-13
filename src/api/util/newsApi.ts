@@ -1,13 +1,15 @@
-import { Article, ContentParams } from '@/types'
-import { NewApiResponse, NewsApiEverythingParams } from '@/types/NewsApiTypes'
-import { PAGE_SIZE_PER_REQUEST } from '@/util/constants'
 import { format } from 'date-fns'
 import qs from 'qs'
+
+import { Article, ContentParams } from '@/types'
+import { NewApiResponse, NewsApiEverythingParams } from '@/types/NewsApiTypes'
+import { NewsSource, PAGE_SIZE_PER_REQUEST } from '@/util/constants'
 
 const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
 
 export const convertNewsApiEverythingResToAritcle = (data: NewApiResponse): Article[] => {
    return data.articles.map((article) => ({
+      api: NewsSource.NewsApi,
       author: article.author,
       content: article.content,
       date: article.publishedAt,

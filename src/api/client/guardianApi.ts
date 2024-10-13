@@ -1,7 +1,8 @@
+import axios from 'axios'
+
+import { parseToGuardianParams } from '../util/guardian'
 import { ContentParams } from '@/types'
 import { GuardianContentResponse, GuardianSectionResponse } from '@/types/GuardianApiTypes'
-import axios from 'axios'
-import { parseToGuardianParams } from '../util/guardian'
 
 const GUARDIAN_API_KEY = import.meta.env.VITE_GUARDIAN_API_KEY
 

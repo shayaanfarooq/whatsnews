@@ -1,10 +1,11 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import SearchPage from './routes/Search'
-import AppBar from './components/AppBar'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import AppBar from './components/AppBar'
 import HomePage from './routes/Home'
+import SearchPage from './routes/Search'
 
 const queryClient = new QueryClient()
 

@@ -1,14 +1,15 @@
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { useMemo } from 'react'
+
 import SearchBar from './SearchBar'
 import { MultiSelectCombobox } from '../ui/autocomplete-multiselect'
+import { DatePicker } from '../ui/date-picker'
 import { useCategoriesData } from '@/api/queries/useCategoriesData'
-import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import {
    contentParamsAtom,
    selectedSourcesAtom,
    updateContentParamsAtom
 } from '@/atoms/searchAtoms'
-import { DatePicker } from '../ui/date-picker'
 import { NewsSource } from '@/util/constants'
 
 const FilterControl = () => {

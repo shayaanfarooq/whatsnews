@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import { Input } from '../ui/input'
-import { useAtomValue, useSetAtom } from 'jotai'
-import { contentParamsAtom, updateContentParamsAtom } from '@/atoms/searchAtoms'
-import { Button } from '../ui/button'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
+import { useAtomValue, useSetAtom } from 'jotai'
+import { useState } from 'react'
+
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
+import { contentParamsAtom, updateContentParamsAtom } from '@/atoms/searchAtoms'
+
 
 const SearchBar = () => {
    const { search } = useAtomValue(contentParamsAtom)

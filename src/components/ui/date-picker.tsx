@@ -1,12 +1,13 @@
 'use client'
 
-import * as React from 'react'
 import { CalendarIcon } from '@radix-ui/react-icons'
 import { format } from 'date-fns'
-import { cn } from '@/lib/utils'
+import * as React from 'react'
+
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
 
 type DatePickerProps = {
    selectedDate?: Date
