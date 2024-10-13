@@ -1,12 +1,14 @@
 import React from 'react'
 
+import { imageUrls } from '@/util/constants'
+
 const Header: React.FC = () => {
    return (
-      <header className='relative bg-zinc-900 text-white h-[500px] flex items-center justify-center overflow-hidden'>
+      <header className='relative bg-zinc-900 text-white h-[450px] flex items-center justify-center overflow-hidden'>
          {/* Background Image */}
          <img
-            src='https://cdn.pixabay.com/photo/2016/02/01/00/56/news-1172463_1280.jpg'
-            alt='Background'
+            src={imageUrls.hero}
+            alt='many_newspapers'
             className='absolute inset-0 w-full h-full object-cover opacity-50'
          />
 

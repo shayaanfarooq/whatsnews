@@ -3,7 +3,7 @@ import { isBefore } from 'date-fns'
 import { Article } from '@/types'
 
 // extend for direction or other sortby keys
-export const articlesSorter = (articleA: Article, articleB: Article, sortBy: string) => {
+export const articlesSorter = (articleA: Article, articleB: Article, sortBy: 'date') => {
    switch (sortBy) {
       case 'date':
          // sorting newest first so the sources aren't sequential in order

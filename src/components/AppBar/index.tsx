@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
+import CenterLayout from '../Layout/CenterLayout'
 import { useCategoriesData } from '@/api/queries/useCategoriesData'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -38,15 +39,17 @@ const AppBar = () => {
 
    return (
       <nav className='bg-zinc-900 top-0 sticky z-50 h-[64px] px-4'>
-         <div className='container mx-auto max-w-4xl py-4 flex justify-between items-center h-full'>
-            <div className='uppercase text-zinc-50 text-3xl font-extrabold'>
-               <NavLink to='/'>W.</NavLink>
-            </div>
+         <CenterLayout variant='wide'>
+            <div className='container py-4 flex justify-between items-center w-full h-full'>
+               <div className='uppercase text-zinc-50 text-3xl font-extrabold'>
+                  <NavLink to='/'>W.</NavLink>
+               </div>
 
-            <div className='flex gap-2'>
-               <NavLinks />
+               <div className='flex gap-2'>
+                  <NavLinks />
+               </div>
             </div>
-         </div>
+         </CenterLayout>
       </nav>
    )
 }

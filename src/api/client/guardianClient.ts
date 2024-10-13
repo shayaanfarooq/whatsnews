@@ -24,7 +24,6 @@ export const fetchGuardianSections = async () => {
 // list via search
 export const fetchGuardianContent = async (params: ContentParams) => {
    const queryString = parseToGuardianParams(params)
-   console.log('query string', queryString)
    const url = `https://content.guardianapis.com/search?${queryString}`
    const response = await axios.get<{ response: GuardianContentResponse }>(url)
    return response.data.response
@@ -32,7 +31,6 @@ export const fetchGuardianContent = async (params: ContentParams) => {
 
 export const fetchGuardianTopStories = async () => {
    const queryString = parseToTopStoriesGuardianParams()
-   console.log('query string', queryString)
    const url = `https://content.guardianapis.com/search?${queryString}`
    const response = await axios.get<{ response: GuardianContentResponse }>(url)
    return response.data.response

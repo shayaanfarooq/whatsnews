@@ -15,6 +15,10 @@ export const PAGE_SIZE_PER_REQUEST = 10
 export const PAGE_SIZE_FOR_TOP_STORIES = 20
 
 export enum HomeTab {
-   TopStories = 'Top Stories',
-   PersonalFeed = 'Personal Feed'
+   TopStories = 'TOP STORIES',
+   PersonalFeed = 'PERSONAL FEED'
+}
+
+export const imageUrls = {
+   hero: 'https://cdn.pixabay.com/photo/2016/02/01/00/56/news-1172463_1280.jpg'
 }

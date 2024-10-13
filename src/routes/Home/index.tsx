@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai'
 
-import FeedSelector from './FeedSelector'
+import ActionBar from './ActionBar'
 import Header from './Header'
 import PersonalFeed from './PersonalFeed'
 import TopStories from './TopStories'
@@ -12,7 +12,7 @@ const HomePage = () => {
    return (
       <div>
          <Header />
-         <FeedSelector />
+         <ActionBar />
          {selectedFeed === HomeTab.TopStories ? <TopStories /> : <PersonalFeed />}
       </div>
    )

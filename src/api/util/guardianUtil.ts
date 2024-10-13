@@ -55,7 +55,7 @@ export const convertGuardianContentToArticle = (data: GuardianContentResponse): 
       id: result.id,
       api: NewsSource.Guardian,
       author: result.tags[0]?.webTitle ?? '',
-      content: '',
+      content: result.fields.body,
       date: result.webPublicationDate,
       title: result.webTitle,
       imageUrl: result.fields.thumbnail ?? '',
