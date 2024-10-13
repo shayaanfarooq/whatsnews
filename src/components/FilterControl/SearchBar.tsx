@@ -6,7 +6,6 @@ import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 import { contentParamsAtom, updateContentParamsAtom } from '@/atoms/searchAtoms'
 
-
 const SearchBar = () => {
    const { search } = useAtomValue(contentParamsAtom)
    const [localSearch, setLocalSearch] = useState(search ?? '')
@@ -23,7 +22,11 @@ const SearchBar = () => {
             onChange={(event) => setLocalSearch(event.target.value)}
             placeholder='Search'
          />
-         <Button onClick={handleSearchClick} disabled={localSearch === search || !localSearch}>
+         <Button
+            variant={'outline'}
+            onClick={handleSearchClick}
+            disabled={localSearch === search || !localSearch}
+         >
             <MagnifyingGlassIcon className='size-4' />
          </Button>
       </div>

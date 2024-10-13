@@ -36,7 +36,7 @@ const FilterControl = () => {
    }
 
    return (
-      <div className='flex gap-4 w-full p-2 md:p-6 bg-zinc-300'>
+      <div className='flex gap-4 w-full p-2 md:p-6 bg-zinc-700'>
          <SearchBar />
 
          <MultiSelectCombobox

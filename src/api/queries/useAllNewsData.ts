@@ -46,19 +46,12 @@ export const useAllNewsData = (sources: string[], params: ContentParams) => {
             data: results
                .map((result) => result.data) // extracting data of each result
                .filter((article) => article !== undefined) // filtering out undefined
-               .flat() // converting into a flat array
-               .sort((articleA, articleB) => {
-                  // sorting newest first so the sources aren't sequential in order
-                  if (articleA && articleB) {
-                     const dateA = new Date(articleA.date)
-                     const dateB = new Date(articleB.date)
-                     return isBefore(dateB, dateA) ? -1 : 1
-                  }
-                  return 0
-               }) as Article[],
+               .flat() as Article[], // converting into a flat array
             pending: results.some((result) => result.isPending),
             isLoading: results.some((result) => result.isLoading),
-            isError: results.some((result) => result.isError)
+            isError: results.some((result) => result.isError),
+            isFetching: results.some((result) => result.isFetching),
+            isPending: results.some((result) => result.isPending)
          }
       }
    })
