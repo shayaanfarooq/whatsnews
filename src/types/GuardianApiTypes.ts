@@ -1,3 +1,16 @@
+// Params
+
+export interface GuardianParams {
+   'api-key': string
+   q?: string
+   'from-date'?: string
+   'to-date'?: string | undefined
+   page?: number
+   'page-size'?: number
+   section?: string
+   'show-tags'?: string
+}
+
 // Content
 export interface GuardianContentResult {
    id: string
@@ -10,6 +23,11 @@ export interface GuardianContentResult {
    isHosted: false
    pillarId: string
    pillarName: string
+   tags: {
+      // * limiting scope here - just going to fetch contributor
+      id: 'profile/rowena-mason'
+      webTitle: 'Rowena Mason'
+   }[]
 }
 
 export interface GuardianContentResponse {

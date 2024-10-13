@@ -1,37 +1,42 @@
-import { NewsSource } from '@/util/constants'
+import { NewsSource, defaultSources } from '@/util/constants'
 import { UseQueryOptions, useQueries } from '@tanstack/react-query'
 import { fetchNewsApiEverything } from '../client/newsApi'
 import { fetchGuardianContent } from '../client/guardianApi'
 import { Article, ContentParams, ContentResponse } from '@/types'
-import { convertNewsApiEverythingResToAritcle } from '../util/newApi'
+import { convertNewsApiEverythingResToAritcle } from '../util/newsApi'
 import { NewApiResponse } from '@/types/NewsApiTypes'
 import { convertGuardianContentToArticle } from '../util/guardian'
 import { GuardianContentResponse } from '@/types/GuardianApiTypes'
 import { isBefore } from 'date-fns'
+import { queryKeys } from '../util/queryKeys'
 
-export const useAllNewsData = (sources: NewsSource[], params: ContentParams) => {
-   const enabled = !!params.category || !!params.search
+export const useAllNewsData = (sources: string[], params: ContentParams) => {
+   const enabled = !!params.categories || !!params.search
+   const finalSources = sources.length === 0 ? defaultSources : sources
    return useQueries({
-      queries: sources.map((source): UseQueryOptions<ContentResponse, unknown, Article[]> => {
+      queries: finalSources.map((source): UseQueryOptions<ContentResponse, unknown, Article[]> => {
          switch (source) {
             case NewsSource.NewsApi:
                // news api
                return {
-                  queryKey: ['newsapi-content', params],
+                  queryKey: [queryKeys.newsApiContent, params],
                   queryFn: () => fetchNewsApiEverything(params),
                   select: (data) => convertNewsApiEverythingResToAritcle(data as NewApiResponse),
                   enabled: enabled
                }
 
-            default:
+            case NewsSource.Guardian:
                // guardian
                return {
-                  queryKey: ['guardian-content', params],
+                  queryKey: [queryKeys.guardianContent, params],
                   queryFn: () => fetchGuardianContent(params),
                   select: (data) =>
                      convertGuardianContentToArticle(data as GuardianContentResponse),
                   enabled: enabled
                }
+
+            default:
+               return { queryKey: [] }
          }
       }),
       combine: (results) => {

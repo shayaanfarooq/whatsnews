@@ -1,43 +1,30 @@
 import { useAllNewsData } from '@/api/queries/useAllNewsData'
-import { NewsSource } from '@/util/constants'
+import { contentParamsAtom, selectedSourcesAtom } from '@/atoms/searchAtoms'
+import FilterControl from '@/components/FilterControl'
 import { format } from 'date-fns'
-import { useState } from 'react'
+import { useAtomValue } from 'jotai'
 
 const Search = () => {
-   const [search, setSearch] = useState('')
-   const [localSearch, setLocalSearch] = useState('')
+   const sources = useAtomValue(selectedSourcesAtom)
+   const contentParams = useAtomValue(contentParamsAtom)
 
-   // const { data, isLoading, isError } = useQuery({
-   //    queryFn: () => fetchNewsFromAPI(search),
-   //    queryKey: ['new-api', { search }]
-   // })
-
-   const { data, isLoading, isError } = useAllNewsData([NewsSource.NewsApi, NewsSource.Guardian], {
-      search: search
+   const { data, isLoading, isError } = useAllNewsData(sources, {
+      ...contentParams
    })
 
    console.log('useAllNewsData', data)
-   const handleGo = () => {
-      setSearch(localSearch)
-   }
 
    if (isLoading) {
       return <div className='text-white'>Loading</div>
    }
 
    if (isError) {
-      console.log('data', data)
       return <div className='text-white'> error</div>
    }
 
    return (
       <>
-         <div>
-            <input value={localSearch} onChange={(e) => setLocalSearch(e.target.value)} />
-         </div>
-         <button className='bg-green-400' onClick={handleGo}>
-            Go
-         </button>
+         <FilterControl />
 
          <div className='flex flex-col'>{'List of Articles'}</div>
          <div className='flex flex-col gap-4'>

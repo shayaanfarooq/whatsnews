@@ -12,7 +12,7 @@ function App() {
    return (
       <QueryClientProvider client={queryClient}>
          <BrowserRouter>
-            <main className='overflow-y-auto w-full'>
+            <main className='overflow-y-auto w-full flex flex-col h-screen max-h-screen'>
                <AppBar />
                <Routes>
                   <Route path='/' element={<HomePage />} />

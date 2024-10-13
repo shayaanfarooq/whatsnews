@@ -3,8 +3,8 @@ import { NewApiResponse } from './NewsApiTypes'
 
 export interface ContentParams {
    search?: string
-   page?: string
-   category?: string[]
+   page: number
+   categories?: string[]
    date?: Date
 }
 

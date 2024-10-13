@@ -1,36 +1,31 @@
-import { useCategories } from '@/api/queries/useCategoriesData'
-import { Link } from 'react-router-dom'
+import { useCategoriesData } from '@/api/queries/useCategoriesData'
+import { Link, NavLink } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
 
 const NavLinks = () => {
    return (
       <div className='hidden md:flex space-x-4'>
-         <button>
+         <Button asChild variant={'link'}>
             <Link to='/'>Home</Link>
-         </button>
-         <button>
+         </Button>
+         <Button asChild variant={'link'}>
             <Link to='/search'>Search</Link>
-         </button>
-         <button>
+         </Button>
+         <Button asChild variant={'link'}>
             <Link to='/search'>My Feed</Link>
-         </button>
+         </Button>
       </div>
    )
 }
 
 const AppBar = () => {
-   useCategories()
-
-   // const [isOpen, setIsOpen] = useState(false)
-
-   // const toggleMenu = () => {
-   //    setIsOpen(!isOpen)
-   // }
+   useCategoriesData()
 
    return (
-      <nav className='bg-zinc-900 dark:bg-zinc-900 top-0 sticky z-50'>
-         <div className='container mx-auto px-4 py-4 flex justify-between items-center'>
-            <div className='text-white font-bold text-xl'>
-               <button>Logo</button>
+      <nav className='bg-zinc-200 top-0 sticky z-50 h-[64px]'>
+         <div className='container mx-auto px-4 py-4 flex justify-between items-center h-full'>
+            <div className='text-zinc-900 font-bold text-xl'>
+               <NavLink to='/'>WhatsNews</NavLink>
             </div>
 
             <div className='flex gap-2'>
