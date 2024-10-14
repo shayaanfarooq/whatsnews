@@ -1,3 +1,6 @@
+<img width="90" alt="image" src="https://github.com/user-attachments/assets/f2fba752-22f5-4c5a-bf0d-4fd566cd1a9f">
+
+
 # WhatsNews - A News Aggregator
 
 **WhatsNews** is a news aggregator built with React, Vite, and TypeScript. The application fetches news articles from multiple sources, including NewsAPI and Guardian API, and displays them in a user-friendly interface.
@@ -107,4 +110,18 @@ Ensure you have the following installed:
    docker run -p 3000:80 whatsnews
    ```
 5. Open `http://localhost:3000` to view the dockerized app.
+
+
+
+## Screenshots
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/88341018-8dca-480a-b55a-fe3b86daf9ab">
+
+<br/><br/>
+   
+<img width="1440" alt="Screenshot 2024-10-15 at 3 04 08 AM" src="https://github.com/user-attachments/assets/7cdc1c47-707a-4cdb-81ce-5b6179c4859b">
+
+<br/><br/>
+
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/83c30cc9-b96e-4e53-962c-f12c6d8a83f8">
+
 
