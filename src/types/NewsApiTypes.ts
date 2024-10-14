@@ -1,3 +1,6 @@
+/* 
+  Types extracted from news api org
+*/
 export interface NewsApiArticle {
    source: {
       id: string

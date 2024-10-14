@@ -11,6 +11,7 @@ import { NewsSource, PAGE_SIZE_FOR_TOP_STORIES, PAGE_SIZE_PER_REQUEST } from '@/
 
 const GUARDIAN_API_KEY = import.meta.env.VITE_GUARDIAN_API_KEY
 
+// converts ContentParams to Guardian api acceptable querystring
 export const parseToGuardianParams = ({
    search,
    categories,
@@ -34,6 +35,7 @@ export const parseToGuardianParams = ({
    return qs.stringify(params)
 }
 
+// returns guardian params query string made for topstories
 export const parseToTopStoriesGuardianParams = () => {
    const params: GuardianParams = {
       page: 1,
@@ -48,6 +50,7 @@ export const parseToTopStoriesGuardianParams = () => {
    return qs.stringify(params)
 }
 
+// returns most basic guardian params query string
 export const getCommonGuardianParams = () => {
    const params: GuardianParams = {
       'api-key': GUARDIAN_API_KEY,
@@ -58,6 +61,7 @@ export const getCommonGuardianParams = () => {
    return qs.stringify(params)
 }
 
+// converts guardian reponse to Article[]
 export const convertGuardianContentToArticle = (data: GuardianContentResponse): Article[] => {
    return data.results.map((result) => ({
       id: result.id,

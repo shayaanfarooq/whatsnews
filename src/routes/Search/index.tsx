@@ -1,10 +1,10 @@
 import ArticleList from './ArticleList'
-import FilterControl from '@/components/FilterControl'
+import FilterBar from './FilterBar'
 
 const Search = () => {
    return (
       <>
-         <FilterControl />
+         <FilterBar />
          <ArticleList />
       </>
    )

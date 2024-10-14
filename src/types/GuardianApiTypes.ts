@@ -1,3 +1,7 @@
+/* 
+  Types extracted from the guardian api
+*/
+
 // Params
 
 export interface GuardianParams {

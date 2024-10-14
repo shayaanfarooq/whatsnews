@@ -49,6 +49,7 @@ export const parseToSingleNewsApiParams = (id: string) => {
    return qs.stringify(query)
 }
 
+// return news api params for topstories
 export const parseToTopStoriesParams = () => {
    const query: NewsApiEverythingParams = {
       q: newsApiCategories.join(' OR '), // combining all categorie

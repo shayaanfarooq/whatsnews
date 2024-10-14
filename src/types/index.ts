@@ -2,6 +2,10 @@ import { GuardianContentResponse, GuardianSingleItem } from './GuardianApiTypes'
 import { NewApiResponse } from './NewsApiTypes'
 import { NewsSource } from '@/util/constants'
 
+/* 
+   Common types used around the app  
+*/
+
 export interface ContentParams {
    search?: string
    page: number

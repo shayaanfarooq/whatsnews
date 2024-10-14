@@ -10,7 +10,7 @@ import { GuardianSingleItem } from '@/types/GuardianApiTypes'
 import { NewApiResponse } from '@/types/NewsApiTypes'
 import { NewsSource } from '@/util/constants'
 
-// using guardians api to fetch list of categories
+// fetching single article from correct api using id
 export const useSingleArticleData = ({ api, id }: { api: NewsSource; id: string }) => {
    return useQuery<SingleArticleResponse, unknown, Article>({
       queryKey: [queryKeys.singleArticle, api, id],

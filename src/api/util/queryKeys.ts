@@ -1,3 +1,4 @@
+// query key strings for react-query hooks
 export const queryKeys = {
    newsApiContent: 'newsapi-content',
    guardianContent: 'guardian-content',

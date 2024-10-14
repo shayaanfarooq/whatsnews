@@ -1,24 +1,28 @@
-import ArticlesGrid from '../components/ArticlesGrid'
 import { usePersonalFeedData } from '@/api/queries/usePersonalFeedData'
+import ArticlesGrid from '@/components/ArticleCardGrid'
 import CenterLayout from '@/components/Layout/CenterLayout'
+import Message from '@/components/Message'
 import { PersonalFeedPreference } from '@/types'
 
 const PersonalFeedView = ({ feedPreferences }: { feedPreferences: PersonalFeedPreference }) => {
    const { data, isLoading, isError } = usePersonalFeedData(feedPreferences)
 
-   if (isLoading) {
-      return <div>Loading...</div>
-   }
-
+   // error
    if (isError) {
-      return <div>Error</div>
+      return (
+         <Message
+            heading='There was an error while fetching your personal feed'
+            body='Please try again later'
+         />
+      )
    }
 
-   console.log('dataaaaaa', data)
    return (
-      <CenterLayout variant='wide'>
-         <ArticlesGrid listOfArticles={data} />
-      </CenterLayout>
+      <div className='px-4 pb-6'>
+         <CenterLayout>
+            <ArticlesGrid listOfArticles={data} isLoading={isLoading} />
+         </CenterLayout>
+      </div>
    )
 }
 

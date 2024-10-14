@@ -1,3 +1,4 @@
+// news sources
 export enum NewsSource {
    NewsApi = 'newsapi',
    Guardian = 'guardian'
@@ -9,16 +10,20 @@ export const newsSourceLabels = {
 
 export const defaultSources: string[] = [NewsSource.NewsApi, NewsSource.Guardian]
 
+// numeric constants
 export const PAGE_SIZE_PER_REQUEST = 10
 export const PAGE_SIZE_FOR_TOP_STORIES = 20
 
+// tabs
 export enum HomeTab {
    TopStories = 'TOP STORIES',
    PersonalFeed = 'PERSONAL FEED'
 }
 
+// image url
 export const imageUrls = {
    hero: 'https://cdn.pixabay.com/photo/2016/02/01/00/56/news-1172463_1280.jpg'
 }
 
+// local storage
 export const PERSONAL_FEED_LOCAL_STORAGE_KEY = 'personal_feed'

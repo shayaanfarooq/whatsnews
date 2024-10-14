@@ -10,6 +10,7 @@ import { GuardianContentResponse } from '@/types/GuardianApiTypes'
 import { NewApiResponse } from '@/types/NewsApiTypes'
 import { NewsSource, defaultSources } from '@/util/constants'
 
+// top stories parallel dynamic queries
 export const useTopStoriesData = () => {
    return useQueries({
       queries: defaultSources.map(
