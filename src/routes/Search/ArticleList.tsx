@@ -1,7 +1,7 @@
 import { useAtomValue, useSetAtom } from 'jotai'
 
 import ArticleResult from './ArticleListItem'
-import { useSearchedNewsData } from '@/api/queries/useAllNewsData'
+import { useSearchedNewsData } from '@/api/queries/useSearchedNewsData'
 import {
    contentParamsAtom,
    selectedSourcesAtom,

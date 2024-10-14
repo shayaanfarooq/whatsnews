@@ -11,13 +11,21 @@ import { NewsSource, PAGE_SIZE_FOR_TOP_STORIES, PAGE_SIZE_PER_REQUEST } from '@/
 
 const GUARDIAN_API_KEY = import.meta.env.VITE_GUARDIAN_API_KEY
 
-export const parseToGuardianParams = ({ search, categories, date, page }: ContentParams) => {
+export const parseToGuardianParams = ({
+   search,
+   categories,
+   date,
+   page,
+   fromDate,
+   pageSize
+}: ContentParams) => {
    const params: GuardianParams = {
       q: search ?? '',
       section: categories?.join('|'),
       page: page,
-      'page-size': PAGE_SIZE_PER_REQUEST,
+      'page-size': pageSize ? pageSize : PAGE_SIZE_PER_REQUEST,
       'to-date': date ? format(date, 'yyyy-MM-dd') : undefined,
+      'from-date': fromDate ? format(fromDate, 'yyyy-MM-dd') : undefined,
       'api-key': GUARDIAN_API_KEY,
       'show-tags': 'contributor',
       'show-fields': 'body,thumbnail'

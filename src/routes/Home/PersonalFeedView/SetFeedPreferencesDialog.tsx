@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai'
-import { FC, useMemo, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 
 import { useCategoriesData } from '@/api/queries/useCategoriesData'
 import { feedPreferencesAtom, isPersonalFeedDialogOpenAtom } from '@/atoms/homeAtoms'
@@ -28,6 +28,14 @@ const SetFeedPreferencesDialog: FC = () => {
            }
          : { sources: [], categories: [] }
    )
+
+   useEffect(() => {
+      if (isDialogOpen && feedPreferences) {
+         setLocalPreferences({ ...feedPreferences })
+      }
+   }, [isDialogOpen, feedPreferences])
+
+   console.log('feed pref', feedPreferences)
 
    const { data: categoryData } = useCategoriesData()
    const categoryOptions = useMemo(

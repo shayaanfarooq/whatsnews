@@ -4,5 +4,7 @@ export const queryKeys = {
    categories: 'categories',
    singleArticle: 'single-article',
    newsApiTopStories: 'newsapi-top-stories',
-   guardianTopStories: 'guardian-top-stories'
+   guardianTopStories: 'guardian-top-stories',
+   newsApiPersonalFeed: 'newsapi-personal-feed',
+   guardianPersonalFeed: 'guardian-personal-feed'
 }

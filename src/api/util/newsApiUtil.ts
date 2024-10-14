@@ -17,14 +17,22 @@ export const newsApiCategories = [
 ]
 
 // converts params to params for news api
-export const parseToNewsApiParams = ({ search, categories, date, page }: ContentParams) => {
+export const parseToNewsApiParams = ({
+   search,
+   categories,
+   date,
+   fromDate,
+   page,
+   pageSize: pgSize
+}: ContentParams) => {
    const categoriesToQ = categories?.join(' OR ') ?? ''
 
    const params: NewsApiEverythingParams = {
-      q: `${search ? search : ''}${categoriesToQ ? ` OR ${categoriesToQ}` : ''}`.slice(0, 500), //max length 500,
+      q: `${search ? search : ''}${categoriesToQ ? `${categoriesToQ}` : ''}`.slice(0, 500), //max length 500,
       page: page,
-      pageSize: PAGE_SIZE_PER_REQUEST,
+      pageSize: pgSize ? pgSize : PAGE_SIZE_PER_REQUEST,
       to: date ? format(date, 'yyyy-MM-dd') : undefined,
+      from: fromDate ? format(fromDate, 'yyyy-MM-dd') : undefined,
       apiKey: NEWS_API_KEY
    }
 

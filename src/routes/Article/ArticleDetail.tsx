@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { useSingleArticle } from '@/api/queries/useSingleArticle'
+import { useSingleArticleData } from '@/api/queries/useSingleArticleData'
 import { NewsSource } from '@/util/constants'
 
 interface ArticleDetailProps {
@@ -11,7 +11,7 @@ interface ArticleDetailProps {
 }
 
 const ArticleDetail: FC<ArticleDetailProps> = ({ id, api }) => {
-   const { isLoading, isError, data: article } = useSingleArticle({ api, id })
+   const { isLoading, isError, data: article } = useSingleArticleData({ api, id })
 
    if (isLoading) {
       return <div>isLoading</div>

@@ -6,7 +6,6 @@ import SetFeedPreferencesDialog from './SetFeedPreferencesDialog'
 import { feedPreferencesAtom, isPersonalFeedDialogOpenAtom } from '@/atoms/homeAtoms'
 import { PERSONAL_FEED_LOCAL_STORAGE_KEY } from '@/util/constants'
 
-// todo
 const PersonalFeedView = () => {
    const [feedPreferences, setFeedPreferences] = useAtom(feedPreferencesAtom)
    const setIsDialogOpen = useSetAtom(isPersonalFeedDialogOpenAtom)
@@ -29,7 +28,11 @@ const PersonalFeedView = () => {
 
    return (
       <div>
-         {feedPreferences ? <PersonalFeed /> : <div> No Preferences Added</div>}
+         {feedPreferences ? (
+            <PersonalFeed feedPreferences={feedPreferences} />
+         ) : (
+            <div> No Preferences Added</div>
+         )}
 
          <SetFeedPreferencesDialog />
       </div>

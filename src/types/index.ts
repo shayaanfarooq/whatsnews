@@ -7,6 +7,8 @@ export interface ContentParams {
    page: number
    categories?: string[]
    date?: Date
+   fromDate?: Date
+   pageSize?: number
 }
 
 // unionised for all apis to use in use query custom hooks
