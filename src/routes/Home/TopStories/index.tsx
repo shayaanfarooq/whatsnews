@@ -1,5 +1,5 @@
-import ArticlesGrid from '../components/ArticlesGrid'
 import { useTopStoriesData } from '@/api/queries/useTopStoriesData'
+import ArticlesGrid from '@/components/ArticleCardGrid'
 import CenterLayout from '@/components/Layout/CenterLayout'
 
 const TopStories = () => {
@@ -9,14 +9,10 @@ const TopStories = () => {
       return <div>Error</div>
    }
 
-   if (isLoading) {
-      return <div>Loading...</div>
-   }
-
    return (
       <div className='px-4'>
-         <CenterLayout>
-            <ArticlesGrid listOfArticles={topStories} />
+         <CenterLayout className='pb-6'>
+            <ArticlesGrid listOfArticles={topStories} isLoading={isLoading} />
          </CenterLayout>
       </div>
    )

@@ -12,7 +12,7 @@ const navlinks = [
 
 const NavLinks = () => {
    return (
-      <div className='hidden space-x-4 font-bold uppercase md:flex'>
+      <div className='flex gap-4 font-bold uppercase md:gap-7'>
          {navlinks.map((navlink) => (
             <NavLink
                key={navlink.label}
@@ -23,7 +23,7 @@ const NavLinks = () => {
                      isActive
                         ? 'underline decoration-orange-600 decoration-2'
                         : 'decoration-2 hover:underline',
-                     'font-extrabold uppercase text-zinc-50'
+                     'px-0 text-sm font-extrabold uppercase text-zinc-50 md:text-base'
                   )
                }
             >
@@ -34,7 +34,7 @@ const NavLinks = () => {
    )
 }
 
-const AppBar = () => {
+const NavBar = () => {
    useCategoriesData()
 
    return (
@@ -54,4 +54,4 @@ const AppBar = () => {
    )
 }
 
-export default AppBar
+export default NavBar

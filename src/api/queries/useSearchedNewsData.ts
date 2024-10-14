@@ -50,7 +50,8 @@ export const useSearchedNewsData = (sources: string[], params: ContentParams) =>
             isLoading: results.some((result) => result.isLoading),
             isError: results.some((result) => result.isError),
             isFetching: results.some((result) => result.isFetching),
-            isPending: results.some((result) => result.isPending)
+            isPending: results.some((result) => result.isPending),
+            isFetched: results.filter((result) => result.isFetched).length === results.length
          }
       }
    })

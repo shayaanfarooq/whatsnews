@@ -25,19 +25,20 @@ const FilterBar = () => {
    )
 
    const handleCategoriesApplied = (newSelected: string[]) => {
-      updateParams({ categories: newSelected })
+      updateParams({ categories: newSelected, page: 1 })
    }
 
    const handleDateChange = (newDate: Date | undefined) => {
-      updateParams({ date: newDate })
+      updateParams({ date: newDate, page: 1 })
    }
 
    const handleSourcesApplied = (newSources: string[]) => {
       setSources(newSources)
+      updateParams({ page: 1 })
    }
 
    return (
-      <div className='flex w-full gap-4 bg-zinc-700 p-2 md:p-6'>
+      <div className='flex w-full gap-4 bg-zinc-800 p-4 md:p-6'>
          <CenterLayout className='w-full'>
             <div className='flex w-full flex-col flex-wrap items-stretch gap-4 md:flex-row'>
                <div className='flex-shrink'>

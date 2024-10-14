@@ -1,9 +1,7 @@
-import { type DialogProps } from '@radix-ui/react-dialog'
 import { Command as CommandPrimitive } from 'cmdk'
 import { Search } from 'lucide-react'
 import * as React from 'react'
 
-import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
 
 const Command = React.forwardRef<
@@ -20,20 +18,6 @@ const Command = React.forwardRef<
    />
 ))
 Command.displayName = CommandPrimitive.displayName
-
-interface CommandDialogProps extends DialogProps {}
-
-const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
-   return (
-      <Dialog {...props}>
-         <DialogContent className='overflow-hidden p-0 shadow-lg'>
-            <Command className='[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-zinc-500 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5 dark:[&_[cmdk-group-heading]]:text-zinc-400'>
-               {children}
-            </Command>
-         </DialogContent>
-      </Dialog>
-   )
-}
 
 const CommandInput = React.forwardRef<
    React.ElementRef<typeof CommandPrimitive.Input>,
@@ -60,7 +44,7 @@ const CommandList = React.forwardRef<
 >(({ className, ...props }, ref) => (
    <CommandPrimitive.List
       ref={ref}
-      className={cn('max-h-[300px] overflow-y-auto overflow-x-hidden', className)}
+      className={cn('max-h-[200px] overflow-y-auto overflow-x-hidden', className)}
       {...props}
    />
 ))
@@ -83,7 +67,7 @@ const CommandGroup = React.forwardRef<
    <CommandPrimitive.Group
       ref={ref}
       className={cn(
-         'overflow-hidden p-1 text-zinc-950 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-zinc-500 dark:text-zinc-50 dark:[&_[cmdk-group-heading]]:text-zinc-400',
+         'overflow-hidden p-1 text-zinc-950 dark:text-zinc-50 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-zinc-500 dark:[&_[cmdk-group-heading]]:text-zinc-400',
          className
       )}
       {...props}
@@ -135,7 +119,6 @@ CommandShortcut.displayName = 'CommandShortcut'
 
 export {
    Command,
-   CommandDialog,
    CommandInput,
    CommandList,
    CommandEmpty,

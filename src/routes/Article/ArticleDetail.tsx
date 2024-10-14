@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom'
 
 import { useSingleArticleData } from '@/api/queries/useSingleArticleData'
 import CenterLayout from '@/components/Layout/CenterLayout'
+import Message from '@/components/Message'
+import ArticleDetailSkeleton from '@/components/Skeletons/ArticleDetailSkeleton'
 import { NewsSource } from '@/util/constants'
 
 interface ArticleDetailProps {
@@ -15,10 +17,16 @@ const ArticleDetail: FC<ArticleDetailProps> = ({ id, api }) => {
    const { isLoading, isError, data: article } = useSingleArticleData({ api, id })
 
    if (isLoading) {
-      return <div>isLoading</div>
+      return <ArticleDetailSkeleton />
    }
+
    if (isError) {
-      return <div>error</div>
+      return (
+         <Message
+            heading='There was an error while fetching your this article'
+            body='Please try again later'
+         />
+      )
    }
 
    return article ? (

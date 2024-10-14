@@ -1,6 +1,7 @@
 'use client'
 
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
+import { Portal } from '@radix-ui/react-portal'
 import { useState, useEffect } from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -85,62 +86,64 @@ export function MultiSelectCombobox({
                   <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                </Button>
             </PopoverTrigger>
-            <PopoverContent className='w-[200px] p-0'>
-               <Command>
-                  <CommandInput
-                     placeholder='Search...'
-                     className='h-9'
-                     value={query}
-                     onValueChange={setQuery}
-                  />
-                  <CommandList>
-                     <CommandEmpty>No options found.</CommandEmpty>
-                     <CommandGroup>
-                        {filteredOptions.map((option) => (
-                           <CommandItem
-                              key={option.value}
-                              onSelect={() => toggleSelection(option.value)}
-                           >
-                              {option.label}
-                              {multiSelect ? (
-                                 <CheckIcon
-                                    className={cn(
-                                       'ml-auto h-4 w-4',
-                                       tempSelectedValues.includes(option.value)
-                                          ? 'opacity-100'
-                                          : 'opacity-0'
-                                    )}
-                                 />
-                              ) : (
-                                 <CheckIcon
-                                    className={cn(
-                                       'ml-auto h-4 w-4',
-                                       tempSelectedValues[0] === option.value
-                                          ? 'opacity-100'
-                                          : 'opacity-0'
-                                    )}
-                                 />
-                              )}
-                           </CommandItem>
-                        ))}
-                     </CommandGroup>
-                  </CommandList>
-               </Command>
-               <div className='flex justify-between border-t border-gray-200 p-2'>
-                  {multiSelect && (
-                     <Button
-                        variant='secondary'
-                        size='sm'
-                        onClick={() => setTempSelectedValues([])}
-                     >
-                        Clear All
+            <Portal>
+               <PopoverContent className='w-[200px] p-0'>
+                  <Command>
+                     <CommandInput
+                        placeholder='Search...'
+                        className='h-9'
+                        value={query}
+                        onValueChange={setQuery}
+                     />
+                     <CommandList>
+                        <CommandEmpty>No options found.</CommandEmpty>
+                        <CommandGroup>
+                           {filteredOptions.map((option) => (
+                              <CommandItem
+                                 key={option.value}
+                                 onSelect={() => toggleSelection(option.value)}
+                              >
+                                 {option.label}
+                                 {multiSelect ? (
+                                    <CheckIcon
+                                       className={cn(
+                                          'ml-auto h-4 w-4',
+                                          tempSelectedValues.includes(option.value)
+                                             ? 'opacity-100'
+                                             : 'opacity-0'
+                                       )}
+                                    />
+                                 ) : (
+                                    <CheckIcon
+                                       className={cn(
+                                          'ml-auto h-4 w-4',
+                                          tempSelectedValues[0] === option.value
+                                             ? 'opacity-100'
+                                             : 'opacity-0'
+                                       )}
+                                    />
+                                 )}
+                              </CommandItem>
+                           ))}
+                        </CommandGroup>
+                     </CommandList>
+                  </Command>
+                  <div className='flex justify-between border-t border-gray-200 p-2'>
+                     {multiSelect && (
+                        <Button
+                           variant='secondary'
+                           size='sm'
+                           onClick={() => setTempSelectedValues([])}
+                        >
+                           Clear All
+                        </Button>
+                     )}
+                     <Button variant='primary' size='sm' onClick={handleApply}>
+                        Apply
                      </Button>
-                  )}
-                  <Button variant='primary' size='sm' onClick={handleApply}>
-                     Apply
-                  </Button>
-               </div>
-            </PopoverContent>
+                  </div>
+               </PopoverContent>
+            </Portal>
          </Popover>
       </div>
    )

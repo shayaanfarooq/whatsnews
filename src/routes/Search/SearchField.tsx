@@ -12,7 +12,7 @@ const SearchField = () => {
    const updateParams = useSetAtom(updateContentParamsAtom)
 
    const handleSearchClick = () => {
-      updateParams({ search: localSearch })
+      updateParams({ search: localSearch, page: 1 })
    }
 
    return (
