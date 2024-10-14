@@ -68,75 +68,43 @@ Ensure you have the following installed:
 6. Open `http://localhost:5731` in your browser to see the app.
 
 ## Folder Structure
-
-whatsnews/
-
-├──`src/`
-│ ├── App.tsx // main app file
-│ ├── `api/`
-│ │ ├── `client/`
-│ │ │ ├── files with fetcher function
-│ │ │ │
-│ │ ├── `queries/`
-│ │ │ ├── files with custom hooks wrapped around react query hooks
-│ │ │ │
-│ │ ├──` util/`
-│ │ │ ├── filters for parsing raw data and params
-│ │ │ ├── queryKeys.ts - constant query keys for react-query
-│ ├── `assets/`
-│ │ ├
-│ ├── `atoms/`
-│ │ ├── jotai atoms for state management
-│ ├── `components/`
-│ │ ├── common app components
-│ │ ├── `ui/`
-│ │ │ ├── resuable `shadcn` based ui components
-│ ├──
-│ ├── `lib/`
-│ │ ├── `shadcn` util
-│ ├── `routes/`
-│ │ ├ pages in the app
-│ │ ├── `Article/`
-│ │ ├── `Home/`
-│ │ ├── `NotFound/`
-│ │ ├── `Search/`
-│ ├── types/
-│ │ ├── all type declarations
-│ ├── util/
-│ │ ├── utils
-│ ├config files
-
+- `src/`
+   - `api/`
+      - `client/` - fetcher functions categories by source api
+      - `queries/` - custom hooks wrapped around react query hooks
+      - `util/` - data parsers dealing with raw api data and params
+   - `assets/`
+   - `atoms/` - jotai atoms for state management
+   - `components/` - common app components
+     - `ui/` - shadcn based reusable components
+   - `routes/` - all pages of the app 
+   - `types/` - typescript type declarations
+   - `util/` - helper functions
+   - ...configs etc
+  
 ## Docker Instructions
 
 ### Dockerizing the App
 
-1. Ensure you have Docker installed on your system.
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/shayaanfarooq/whatsnews.git
+   cd whatsnews
+   ```
+
+2. Ensure you have Docker installed on your system.
    (Due to some issue with env+Vite+docker, this has to be done slightly unconventionally)
-2. Build the Docker image:
+3. Build the Docker image:
    ```bash
    docker build \
    --build-arg VITE_NEWS_API_KEY=your_api_key \
    --build-arg VITE_GUARDIAN_API_KEY=your_api_key_2 \
    -t whatsnews .
    ```
-3. Run the Docker container:
+4. Run the Docker container:
    ```bash
    docker run -p 3000:80 whatsnews
    ```
-4. Open `http://localhost:3000` to view the app.
+5. Open `http://localhost:3000` to view the dockerized app.
 
-### Passing Environment Variables in Docker
-
-You can either pass environment variables using an `.env` file or directly via the `--env` flag when running the container.
-
-Example using `.env` file:
-
-```bash
-docker run -p 3000:80 --env-file .env whatsnews
-```
-
-Example passing variables directly:
-
-```bash
-docker run -p 3000:80   --env VITE_NEWS_API_KEY=your_news_api_key   --env VITE_GUARDIAN_API_KEY=your_guardian_api_key   whatsnews
-```
