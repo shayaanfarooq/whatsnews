@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 
 import PersonalFeed from './PersonalFeed'
 import { feedPreferencesAtom, isPersonalFeedDialogOpenAtom } from '@/atoms/homeAtoms'
+import CenterLayout from '@/components/Layout/CenterLayout'
+import Message from '@/components/Message'
 import { PERSONAL_FEED_LOCAL_STORAGE_KEY } from '@/util/constants'
 
 const PersonalFeedView = () => {
@@ -29,7 +31,12 @@ const PersonalFeedView = () => {
          {feedPreferences ? (
             <PersonalFeed feedPreferences={feedPreferences} />
          ) : (
-            <div> No Preferences Added</div>
+            <CenterLayout className='w-full'>
+               <Message
+                  heading='We could not find any preferences data'
+                  body='Add some from above to get started personalizing your field'
+               />
+            </CenterLayout>
          )}
       </div>
    )

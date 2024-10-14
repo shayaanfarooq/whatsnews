@@ -23,10 +23,12 @@ const ArticleDetail: FC<ArticleDetailProps> = ({ id, api }) => {
 
    if (isError) {
       return (
-         <Message
-            heading='There was an error while fetching your this article'
-            body='Please try again later'
-         />
+         <CenterLayout>
+            <Message
+               heading='There was an error while fetching your this article'
+               body='Please try again later'
+            />
+         </CenterLayout>
       )
    }
 

@@ -36,7 +36,7 @@ const ArticleList = () => {
 
    if (!isFirstFetchDone) {
       return (
-         <CenterLayout className='w-full py-4'>
+         <CenterLayout className='w-full'>
             <Message
                heading='Welcome to Whatsnews Search!'
                body='Add a filter from above to begin searching for articles'
@@ -47,10 +47,12 @@ const ArticleList = () => {
 
    if (isError) {
       return (
-         <Message
-            heading="Hey, we couldn't find what you're searching for"
-            body="Might be worth updating the filters. If that doesn't work, please try again after a few moments"
-         />
+         <CenterLayout className='w-full'>
+            <Message
+               heading="Hey, we couldn't find what you're searching for"
+               body="Might be worth updating the filters. If that doesn't work, please try again after a few moments"
+            />
+         </CenterLayout>
       )
    }
 

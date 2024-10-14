@@ -1,6 +1,7 @@
 import { useParams, useSearchParams } from 'react-router-dom'
 
 import ArticleDetail from './ArticleDetail'
+import CenterLayout from '@/components/Layout/CenterLayout'
 import Message from '@/components/Message'
 import { NewsSource } from '@/util/constants'
 
@@ -19,7 +20,9 @@ const ArticlePage = () => {
    return id && isValidNewsSource ? (
       <ArticleDetail id={id} api={api as NewsSource} />
    ) : (
-      <Message heading='Article not found' body='Please try again in a while' />
+      <CenterLayout className='w-full'>
+         <Message heading='Article not found' body='Please try again in a while' />
+      </CenterLayout>
    )
 }
 
