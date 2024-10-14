@@ -20,7 +20,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
    const imgUrl = imageUrl ? imageUrl : backupImage
 
    return (
-      <NavLink to={`/search/${api}?id=${id}`} className={className}>
+      <NavLink to={`/article/${api}?id=${id}`} className={className}>
          <div className={`group cursor-pointer flex flex-col gap-4 justify-between h-full`}>
             <div className={`group cursor-pointer flex flex-col gap-4 text-left`}>
                <div className='group-hover:bg-primary-500 w-20 h-3 bg-zinc-900 transition-colors' />

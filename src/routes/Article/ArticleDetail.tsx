@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { useSingleArticleData } from '@/api/queries/useSingleArticleData'
+import CenterLayout from '@/components/Layout/CenterLayout'
 import { NewsSource } from '@/util/constants'
 
 interface ArticleDetailProps {
@@ -20,7 +21,6 @@ const ArticleDetail: FC<ArticleDetailProps> = ({ id, api }) => {
       return <div>error</div>
    }
 
-   console.log('data for single', article)
    return article ? (
       <div className=''>
          {/* Article Image */}
@@ -28,43 +28,45 @@ const ArticleDetail: FC<ArticleDetailProps> = ({ id, api }) => {
             <img
                src={article.imageUrl}
                alt={article.title}
-               className='w-full h-[500px] object-cover mb-4'
+               className='mb-4 h-[500px] w-full object-cover'
             />
          )}
 
-         <div className='max-w-4xl  mx-auto rounded-lg pb-6 px-2'>
-            {/* Article Title */}
-            <h1 className='text-4xl font-extrabold text-zinc-900 mb-2 text-left'>
-               {article.title}
-            </h1>
+         <CenterLayout variant='wide'>
+            <div className='w-full px-4 pb-6'>
+               {/* Article Title */}
+               <h1 className='mb-2 text-left text-2xl font-extrabold text-zinc-900 md:text-4xl'>
+                  {article.title}
+               </h1>
 
-            {/* Author and Date */}
-            <div className='text-md text-zinc-600 mb-4 text-left'>
-               <span className='text-primary font-semibold'>{article.source}</span>
-               <span> | {article.author}</span> |{' '}
-               <span>{format(new Date(article.date), 'MMM. d, yyyy')}</span>
-            </div>
-
-            {/* Article Content */}
-            <div
-               className='text-zinc-700 mb-6 font-serif flex gap-4 text-left flex-col text-xl'
-               dangerouslySetInnerHTML={{ __html: article.content }}
-            />
-
-            {/* Full Story Button */}
-            {article.fullStory && (
-               <div className='flex justify-end w-full'>
-                  <NavLink
-                     to={article.fullStory}
-                     target='_blank'
-                     rel='noopener noreferrer'
-                     className='inline-block px-6 py-2 text-sm font-semibold text-white bg-primary rounded hover:bg-orange-600 transition'
-                  >
-                     Read Full Story
-                  </NavLink>
+               {/* Author and Date */}
+               <div className='text-md mb-4 text-left text-zinc-600'>
+                  <span>{article.author}</span> |{' '}
+                  <span>{format(new Date(article.date), 'MMM. d, yyyy')} | </span>
+                  <span className='font-semibold text-primary'>{article.source}</span>
                </div>
-            )}
-         </div>
+
+               {/* Article Content */}
+               <div
+                  className='text-md text-md mb-6 flex flex-col gap-4 text-left font-serif text-zinc-700 md:text-xl'
+                  dangerouslySetInnerHTML={{ __html: article.content }}
+               />
+
+               {/* Full Story Button */}
+               {article.fullStory && (
+                  <div className='flex w-full justify-end'>
+                     <NavLink
+                        to={article.fullStory}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='inline-block rounded bg-primary px-6 py-2 text-sm font-semibold text-white transition hover:bg-orange-600'
+                     >
+                        Read Full Story
+                     </NavLink>
+                  </div>
+               )}
+            </div>
+         </CenterLayout>
       </div>
    ) : null
 }

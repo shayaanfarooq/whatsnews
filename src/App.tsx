@@ -19,7 +19,7 @@ function App() {
                <Routes>
                   <Route path='/' element={<HomePage />} />
                   <Route path='/search/*' element={<SearchPage />} />
-                  <Route path='/search/:api/*' element={<ArticlePage />} />
+                  <Route path='/article/:api/*' element={<ArticlePage />} />
                </Routes>
             </main>
          </BrowserRouter>

@@ -12,7 +12,7 @@ const ArticleListItem: FC<ArticleListItemProps> = ({
    article: { id, imageUrl, author, date, source, title, api }
 }) => {
    return (
-      <NavLink to={`/search/${api}?id=${id}`}>
+      <NavLink to={`/article/${api}?id=${id}`}>
          <div className='flex items-stretch space-x-4 transition-colors cursor-pointer group '>
             {/* Article Image */}
             <div className='flex-1'>
