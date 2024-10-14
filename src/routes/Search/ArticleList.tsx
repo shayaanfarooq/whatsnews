@@ -7,6 +7,7 @@ import {
    selectedSourcesAtom,
    updateContentParamsAtom
 } from '@/atoms/filterAtoms'
+import CenterLayout from '@/components/Layout/CenterLayout'
 import PaginationControl from '@/components/ui/pagination-control'
 import { articlesSorter } from '@/util/sort'
 
@@ -32,36 +33,40 @@ const ArticleList = () => {
    }
 
    return (
-      <div className='m-auto max-w-4xl py-4 flex flex-col gap-4'>
-         {!isPending && (
-            <div className='flex w-full justify-between items center'>
-               <div className='text-xl w-full text-left font-extrabold uppercase'>Results</div>
-               <PaginationControl
-                  currentPage={contentParams.page}
-                  isNextDisabled={data.length === 0}
-                  isPreviousDisabled={contentParams.page === 1}
-                  onPageChange={handlePageChange}
-               />
+      <div className='w-full p-4'>
+         <CenterLayout className='flex flex-col gap-4'>
+            {/* Pagination at the top */}
+            {!isPending && (
+               <div className='items center flex w-full justify-between'>
+                  <div className='w-full text-left text-xl font-extrabold uppercase'>Results</div>
+                  <PaginationControl
+                     currentPage={contentParams.page}
+                     isNextDisabled={data.length === 0}
+                     isPreviousDisabled={contentParams.page === 1}
+                     onPageChange={handlePageChange}
+                  />
+               </div>
+            )}
+            <div className='flex flex-col gap-8'>
+               {data
+                  ?.sort((a, b) => articlesSorter(a, b, 'date'))
+                  .map((article, index) => {
+                     return <ArticleResult article={article} key={`${article.title}-${index}`} />
+                  })}
             </div>
-         )}
-         <div className='flex flex-col gap-8'>
-            {data
-               ?.sort((a, b) => articlesSorter(a, b, 'date'))
-               .map((article, index) => {
-                  return <ArticleResult article={article} key={`${article.title}-${index}`} />
-               })}
-         </div>
 
-         {!isPending && (
-            <div className='flex justify-end w-full'>
-               <PaginationControl
-                  currentPage={contentParams.page}
-                  isNextDisabled={data.length === 0}
-                  isPreviousDisabled={contentParams.page === 1}
-                  onPageChange={handlePageChange}
-               />
-            </div>
-         )}
+            {/* Pagination at the bottom */}
+            {!isPending && (
+               <div className='flex w-full justify-end'>
+                  <PaginationControl
+                     currentPage={contentParams.page}
+                     isNextDisabled={data.length === 0}
+                     isPreviousDisabled={contentParams.page === 1}
+                     onPageChange={handlePageChange}
+                  />
+               </div>
+            )}
+         </CenterLayout>
       </div>
    )
 }

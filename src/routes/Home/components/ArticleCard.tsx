@@ -54,6 +54,7 @@ const ArticleCard: FC<ArticleCardProps> = ({
             </div>
 
             {/* Read -> */}
+
             <div className='invisible flex h-4 items-center self-end bg-primary px-4 py-2 transition-colors group-hover:visible'>
                <p className='text-white'>Read</p>
                <ArrowRight className='size-4 text-white transition-transform duration-500 group-hover:translate-x-2' />
