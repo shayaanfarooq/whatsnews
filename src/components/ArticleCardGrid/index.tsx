@@ -11,17 +11,19 @@ interface ArticlesGridProps {
    isLoading?: boolean
 }
 
+// resuable card grid for articles
 const ArticlesGrid: FC<ArticlesGridProps> = ({ listOfArticles, isLoading = false }) => {
    return (
       <div className='grid grid-cols-1 gap-8 pt-8 lg:grid-cols-3 xl:grid-cols-4'>
          {isLoading
-            ? [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+            ? // skeletons
+              [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                  <SkeletonCard
                     key={`skeleton-card-${num}`}
                     className={cn(num % 5 === 0 && 'lg:col-span-2')}
                  />
               ))
-            : listOfArticles
+            : listOfArticles // articles
                  .sort((a, b) => articlesSorter(a, b, 'date'))
                  .map((article, index) => {
                     return (

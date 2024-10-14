@@ -10,6 +10,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
 import { HomeTab } from '@/util/constants'
 
+// home view tabs, update preferences cta
 const ActionBar = () => {
    const [selectedFeed, setSelectedFeed] = useAtom(selectedFeedAtom)
    const handleTabChange = (newValue: string) => {

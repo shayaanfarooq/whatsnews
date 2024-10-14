@@ -7,6 +7,7 @@ import { PersonalFeedPreference } from '@/types'
 const PersonalFeedView = ({ feedPreferences }: { feedPreferences: PersonalFeedPreference }) => {
    const { data, isLoading, isError } = usePersonalFeedData(feedPreferences)
 
+   // error
    if (isError) {
       return (
          <Message

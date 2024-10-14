@@ -13,6 +13,7 @@ interface ArticleDetailProps {
    id: string
 }
 
+// complete article
 const ArticleDetail: FC<ArticleDetailProps> = ({ id, api }) => {
    const { isLoading, isError, data: article } = useSingleArticleData({ api, id })
 

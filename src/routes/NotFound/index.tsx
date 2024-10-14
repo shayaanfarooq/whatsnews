@@ -1,6 +1,7 @@
 import CenterLayout from '@/components/Layout/CenterLayout'
 import Message from '@/components/Message'
 
+// 404
 const NotFoundPage = () => {
    return (
       <div className='p-6'>

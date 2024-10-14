@@ -7,6 +7,7 @@ interface CenterLayoutProps {
    className?: string
 }
 
+// used to assign max width and margin auto consistently accross the app in various components
 const CenterLayout: FC<CenterLayoutProps> = ({ children, className }) => {
    return <div className={cn('mx-auto max-w-4xl', className)}>{children}</div>
 }

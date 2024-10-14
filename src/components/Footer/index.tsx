@@ -1,6 +1,6 @@
-import React from 'react'
+import { FC } from 'react'
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
    return (
       <footer className='mt-auto bg-zinc-900 py-8 align-baseline text-zinc-100'>
          <div className='container mx-auto px-4'>

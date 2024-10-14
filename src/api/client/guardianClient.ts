@@ -29,6 +29,7 @@ export const fetchGuardianContent = async (params: ContentParams) => {
    return response.data.response
 }
 
+// top stories via search
 export const fetchGuardianTopStories = async () => {
    const queryString = parseToTopStoriesGuardianParams()
    const url = `https://content.guardianapis.com/search?${queryString}`

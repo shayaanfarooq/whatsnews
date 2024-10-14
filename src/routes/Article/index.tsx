@@ -9,6 +9,7 @@ const ArticlePage = () => {
    const [searchparams] = useSearchParams()
    const id = searchparams.get('id')
 
+   // validating
    const isValidNewsSource =
       api &&
       Object.values(NewsSource)

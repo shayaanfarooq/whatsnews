@@ -23,6 +23,7 @@ const SetFeedPreferencesDialog: FC = () => {
          : { sources: [], categories: [] }
    )
 
+   // syncing values
    useEffect(() => {
       if (isDialogOpen && feedPreferences) {
          setLocalPreferences({ ...feedPreferences })

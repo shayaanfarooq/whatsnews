@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import { imageUrls } from '@/util/constants'
 
+// hero
 const Header: FC = () => {
    return (
       <header className='relative flex h-[300px] items-center justify-center overflow-hidden bg-zinc-900 text-white md:h-[450px]'>

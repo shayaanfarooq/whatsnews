@@ -1,12 +1,18 @@
 import { useTopStoriesData } from '@/api/queries/useTopStoriesData'
 import ArticlesGrid from '@/components/ArticleCardGrid'
 import CenterLayout from '@/components/Layout/CenterLayout'
+import Message from '@/components/Message'
 
 const TopStories = () => {
    const { data: topStories, isLoading, isError } = useTopStoriesData()
 
    if (isError) {
-      return <div>Error</div>
+      return (
+         <Message
+            heading='There was an error while fetching top stories'
+            body='Please try again later'
+         />
+      )
    }
 
    return (

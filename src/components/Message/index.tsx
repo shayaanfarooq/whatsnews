@@ -5,6 +5,7 @@ interface MessageProps {
    body?: string
 }
 
+// reusable Message component on the page to show in case of error, not found, etc
 const Message: FC<MessageProps> = ({ heading, body }) => {
    return (
       <div className='flex flex-col gap-4 text-left'>
