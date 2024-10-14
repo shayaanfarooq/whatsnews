@@ -1,36 +1,55 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+
+import CenterLayout from '../Layout/CenterLayout'
+import { useCategoriesData } from '@/api/queries/useCategoriesData'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+
+const navlinks = [
+   { to: '/', label: 'Home' },
+   { to: '/search', label: 'Search' }
+]
 
 const NavLinks = () => {
    return (
-      <div className='hidden md:flex space-x-4'>
-         <button>
-            <Link to='/'>Home</Link>
-         </button>
-         <button>
-            <Link to='/browse'>Browse</Link>
-         </button>
+      <div className='hidden md:flex space-x-4 font-bold uppercase '>
+         {navlinks.map((navlink) => (
+            <NavLink
+               key={navlink.label}
+               to={navlink.to}
+               className={({ isActive }) =>
+                  cn(
+                     buttonVariants({ variant: 'link' }),
+                     isActive
+                        ? 'underline decoration-orange-600 decoration-2'
+                        : 'hover:underline decoration-2 ',
+                     'font-extrabold uppercase text-zinc-50'
+                  )
+               }
+            >
+               {navlink.label}
+            </NavLink>
+         ))}
       </div>
    )
 }
 
 const AppBar = () => {
-   // const [isOpen, setIsOpen] = useState(false)
-
-   // const toggleMenu = () => {
-   //    setIsOpen(!isOpen)
-   // }
+   useCategoriesData()
 
    return (
-      <nav className='bg-zinc-900 dark:bg-zinc-900 top-0 sticky z-50'>
-         <div className='container mx-auto px-4 py-4 flex justify-between items-center'>
-            <div className='text-white font-bold text-xl'>
-               <button>Logo</button>
-            </div>
+      <nav className='bg-zinc-900 top-0 sticky z-50 h-[64px] px-4'>
+         <CenterLayout variant='wide'>
+            <div className='flex justify-between items-center min-w-full h-[64px]'>
+               <div className='uppercase text-zinc-50 text-3xl font-extrabold'>
+                  <NavLink to='/'>W.</NavLink>
+               </div>
 
-            <div className='flex gap-2'>
-               <NavLinks />
+               <div className='flex gap-2'>
+                  <NavLinks />
+               </div>
             </div>
-         </div>
+         </CenterLayout>
       </nav>
    )
 }
