@@ -12,7 +12,7 @@ const navlinks = [
 
 const NavLinks = () => {
    return (
-      <div className='hidden md:flex space-x-4 font-bold uppercase '>
+      <div className='hidden space-x-4 font-bold uppercase md:flex'>
          {navlinks.map((navlink) => (
             <NavLink
                key={navlink.label}
@@ -22,7 +22,7 @@ const NavLinks = () => {
                      buttonVariants({ variant: 'link' }),
                      isActive
                         ? 'underline decoration-orange-600 decoration-2'
-                        : 'hover:underline decoration-2 ',
+                        : 'decoration-2 hover:underline',
                      'font-extrabold uppercase text-zinc-50'
                   )
                }
@@ -38,10 +38,10 @@ const AppBar = () => {
    useCategoriesData()
 
    return (
-      <nav className='bg-zinc-900 top-0 sticky z-50 h-[64px] px-4'>
-         <CenterLayout variant='wide'>
-            <div className='flex justify-between items-center min-w-full h-[64px]'>
-               <div className='uppercase text-zinc-50 text-3xl font-extrabold'>
+      <nav className='sticky top-0 z-50 h-[64px] bg-zinc-900 px-4'>
+         <CenterLayout>
+            <div className='flex h-[64px] min-w-full items-center justify-between'>
+               <div className='text-3xl font-extrabold uppercase text-zinc-50'>
                   <NavLink to='/'>W.</NavLink>
                </div>
 

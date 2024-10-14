@@ -27,6 +27,7 @@ type MultiSelectComboboxProps = {
    placeholder?: string
    multiSelect?: boolean // Make multi-select optional
    label?: string
+   className?: string
 }
 
 export function MultiSelectCombobox({
@@ -35,7 +36,8 @@ export function MultiSelectCombobox({
    onApply,
    placeholder = 'Select...',
    multiSelect = true, // Default to multi-select
-   label = ''
+   label = '',
+   className = ''
 }: MultiSelectComboboxProps) {
    const [open, setOpen] = useState(false)
    const [tempSelectedValues, setTempSelectedValues] = useState<string[]>(selectedValues)
@@ -73,7 +75,7 @@ export function MultiSelectCombobox({
                <Button
                   variant='outline'
                   role='combobox'
-                  className={cn('w-[200px] justify-between')}
+                  className={cn('w-[200px] justify-between', className)}
                >
                   {tempSelectedValues.length > 0
                      ? multiSelect
@@ -124,7 +126,7 @@ export function MultiSelectCombobox({
                      </CommandGroup>
                   </CommandList>
                </Command>
-               <div className='flex justify-between p-2 border-t border-gray-200'>
+               <div className='flex justify-between border-t border-gray-200 p-2'>
                   {multiSelect && (
                      <Button
                         variant='secondary'

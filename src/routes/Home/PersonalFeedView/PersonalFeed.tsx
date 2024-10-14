@@ -16,9 +16,11 @@ const PersonalFeedView = ({ feedPreferences }: { feedPreferences: PersonalFeedPr
 
    console.log('dataaaaaa', data)
    return (
-      <CenterLayout variant='wide'>
-         <ArticlesGrid listOfArticles={data} />
-      </CenterLayout>
+      <div className='px-4'>
+         <CenterLayout>
+            <ArticlesGrid listOfArticles={data} />
+         </CenterLayout>
+      </div>
    )
 }
 

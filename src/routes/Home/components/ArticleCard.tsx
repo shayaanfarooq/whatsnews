@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 import { ArrowRight } from 'lucide-react'
-import React, { useState } from 'react'
+import { FC, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import backupImage from '@/assets/images/news_placeholder.svg'
@@ -12,7 +12,7 @@ interface ArticleCardProps {
    className?: string
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = ({
+const ArticleCard: FC<ArticleCardProps> = ({
    article: { id, imageUrl, author, date, source, title, api, content },
    className
 }) => {
@@ -21,9 +21,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
 
    return (
       <NavLink to={`/article/${api}?id=${id}`} className={className}>
-         <div className={`group cursor-pointer flex flex-col gap-4 justify-between h-full`}>
-            <div className={`group cursor-pointer flex flex-col gap-4 text-left`}>
-               <div className='group-hover:bg-primary-500 w-20 h-3 bg-zinc-900 transition-colors' />
+         <div className={`group flex h-full cursor-pointer flex-col justify-between gap-4`}>
+            <div className={`group flex cursor-pointer flex-col gap-2 text-left md:gap-4`}>
+               <div className='h-3 w-20 bg-zinc-900 transition-colors group-hover:bg-primary-500' />
                {/* Image */}
                {imgUrl && (
                   <img
@@ -31,30 +31,32 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
                      src={imgUrl}
                      onLoad={() => setIsImageLoaded(true)}
                      className={cn(
-                        'w-full h-48 object-cover mb-4 bg-zinc-100 group-hover:opacity-90 transition-opacity',
+                        'mb-4 h-48 w-full bg-zinc-100 object-cover transition-opacity group-hover:opacity-90',
                         !isImageLoaded && 'animate-pulse'
                      )}
                   />
                )}
                {/* Title */}
-               <h2 className='text-xl font-extrabold text-zinc-900 mb-2 group-hover:text-primary-500  transition-colors'>
+               <h2 className='mb-2 text-lg font-extrabold text-zinc-900 transition-colors group-hover:text-primary-500 md:text-xl'>
                   {title}
                </h2>
                {/* Author, Date, and Source */}
-               <div className='text-sm text-zinc-600 mb-4 group-hover:text-primary transition-colors'>
+               <div className='mb-4 text-sm text-zinc-600 transition-colors group-hover:text-primary'>
                   <span>By {author}</span> | <span>{format(new Date(date), 'MMM. d, yyyy')}</span> |{' '}
-                  <span className='font-semibold '>{source}</span>
+                  <span className='font-semibold'>{source}</span>
                </div>
-               {/* Content Preview */}
 
+               {/* Content Preview */}
                <div
-                  className='font-serif text-zinc-700 line-clamp-3 group-hover:text-primary transition-colors '
+                  className='line-clamp-3 font-serif text-zinc-700 transition-colors group-hover:text-primary'
                   dangerouslySetInnerHTML={{ __html: `${content}` }}
                />
             </div>
-            <div className='bg-primary self-end  flex items-center invisible group-hover:visible transition-colors px-4 h-4 py-2'>
+
+            {/* Read -> */}
+            <div className='invisible flex h-4 items-center self-end bg-primary px-4 py-2 transition-colors group-hover:visible'>
                <p className='text-white'>Read</p>
-               <ArrowRight className='text-white size-4 group-hover:translate-x-2 duration-500 transition-transform' />
+               <ArrowRight className='size-4 text-white transition-transform duration-500 group-hover:translate-x-2' />
             </div>
          </div>
       </NavLink>

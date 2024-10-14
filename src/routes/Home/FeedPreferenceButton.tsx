@@ -1,5 +1,4 @@
 import { useAtomValue, useSetAtom } from 'jotai'
-import React from 'react'
 
 import { feedPreferencesAtom, isPersonalFeedDialogOpenAtom } from '@/atoms/homeAtoms'
 import { Button } from '@/components/ui/button'
@@ -10,7 +9,7 @@ const FeedPreferenceButton = () => {
    return (
       <Button
          variant='link'
-         className='text-zinc-50 uppercase'
+         className='uppercase text-zinc-50'
          onClick={() => setIsDialogOpen(true)}
       >
          {feedPreferences ? 'Update' : 'Add'} Preferences

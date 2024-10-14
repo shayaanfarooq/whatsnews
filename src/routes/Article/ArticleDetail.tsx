@@ -32,7 +32,7 @@ const ArticleDetail: FC<ArticleDetailProps> = ({ id, api }) => {
             />
          )}
 
-         <CenterLayout variant='wide'>
+         <CenterLayout>
             <div className='w-full px-4 pb-6'>
                {/* Article Title */}
                <h1 className='mb-2 text-left text-2xl font-extrabold text-zinc-900 md:text-4xl'>

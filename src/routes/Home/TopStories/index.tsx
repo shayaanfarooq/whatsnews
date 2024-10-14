@@ -13,11 +13,12 @@ const TopStories = () => {
       return <div>Loading...</div>
    }
 
-   console.log('data for topstories', topStories)
    return (
-      <CenterLayout variant='wide'>
-         <ArticlesGrid listOfArticles={topStories} />
-      </CenterLayout>
+      <div className='px-4'>
+         <CenterLayout>
+            <ArticlesGrid listOfArticles={topStories} />
+         </CenterLayout>
+      </div>
    )
 }
 

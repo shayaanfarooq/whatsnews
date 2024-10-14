@@ -1,24 +1,26 @@
-import React from 'react'
+import { FC } from 'react'
 
 import { imageUrls } from '@/util/constants'
 
-const Header: React.FC = () => {
+const Header: FC = () => {
    return (
-      <header className='relative bg-zinc-900 text-white h-[450px] flex items-center justify-center overflow-hidden'>
+      <header className='relative flex h-[300px] items-center justify-center overflow-hidden bg-zinc-900 text-white md:h-[450px]'>
          {/* Background Image */}
          <img
             src={imageUrls.hero}
             alt='many_newspapers'
-            className='absolute inset-0 w-full h-full object-cover opacity-50'
+            className='absolute inset-0 h-full w-full object-cover opacity-50'
          />
 
          {/* Overlay for better text visibility */}
          <div className='absolute inset-0 bg-zinc-900 opacity-60'></div>
 
          {/* Text Content */}
-         <div className='relative z-10 text-center flex justify-center flex-col items-center'>
-            <h1 className='text-6xl font-extrabold tracking-tight uppercase'>WHATSNEWS.</h1>
-            <p className='px-2 uppercase mt-4 text-lg font-medium text-primary-500 bg-zinc-900 w-fit'>
+         <div className='relative z-10 flex flex-col items-center justify-center text-center'>
+            <h1 className='text-3xl font-extrabold uppercase tracking-tight md:text-6xl'>
+               WHATSNEWS.
+            </h1>
+            <p className='text:md mt-4 w-fit bg-zinc-900 px-2 font-medium uppercase text-primary-500 md:text-lg'>
                All your news in one place
             </p>
          </div>

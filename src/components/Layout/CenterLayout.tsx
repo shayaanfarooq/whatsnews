@@ -4,15 +4,11 @@ import { cn } from '@/lib/utils'
 
 interface CenterLayoutProps {
    children: ReactNode
-   variant?: 'default' | 'wide'
+   className?: string
 }
 
-const CenterLayout: FC<CenterLayoutProps> = ({ children, variant = 'default' }) => {
-   return (
-      <div className={cn('mx-auto', variant === 'default' ? 'max-w-4xl' : 'max-w-6xl')}>
-         {children}
-      </div>
-   )
+const CenterLayout: FC<CenterLayoutProps> = ({ children, className }) => {
+   return <div className={cn('mx-auto max-w-4xl', className)}>{children}</div>
 }
 
 export default CenterLayout

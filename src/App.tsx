@@ -14,7 +14,7 @@ function App() {
    return (
       <QueryClientProvider client={queryClient}>
          <BrowserRouter>
-            <main className='overflow-y-auto w-full flex flex-col h-screen max-h-screen bg-zinc-50'>
+            <main className='flex h-screen max-h-screen w-full flex-col overflow-y-auto bg-zinc-50'>
                <AppBar />
                <Routes>
                   <Route path='/' element={<HomePage />} />
@@ -23,7 +23,7 @@ function App() {
                </Routes>
             </main>
          </BrowserRouter>
-         <ReactQueryDevtools initialIsOpen={true} />
+         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
    )
 }

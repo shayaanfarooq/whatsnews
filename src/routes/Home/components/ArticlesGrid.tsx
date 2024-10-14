@@ -11,7 +11,7 @@ interface ArticlesGridProps {
 
 const ArticlesGrid: FC<ArticlesGridProps> = ({ listOfArticles }) => {
    return (
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-8'>
+      <div className='grid grid-cols-1 gap-8 pt-8 lg:grid-cols-3 xl:grid-cols-4'>
          {listOfArticles
             .sort((a, b) => articlesSorter(a, b, 'date'))
             .map((article, index) => {
@@ -19,7 +19,7 @@ const ArticlesGrid: FC<ArticlesGridProps> = ({ listOfArticles }) => {
                   <ArticleCard
                      key={`articles-grid-${article.title}-${index}`}
                      article={article}
-                     className={cn(index % 5 === 0 && 'col-span-2')}
+                     className={cn(index % 5 === 0 && 'lg:col-span-2')} // every 5th card is has 2 cols to give a less uniform effect
                   />
                )
             })}
