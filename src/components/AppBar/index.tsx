@@ -40,7 +40,7 @@ const AppBar = () => {
    return (
       <nav className='bg-zinc-900 top-0 sticky z-50 h-[64px] px-4'>
          <CenterLayout variant='wide'>
-            <div className='container py-4 flex justify-between items-center w-full h-full'>
+            <div className='flex justify-between items-center min-w-full h-[64px]'>
                <div className='uppercase text-zinc-50 text-3xl font-extrabold'>
                   <NavLink to='/'>W.</NavLink>
                </div>

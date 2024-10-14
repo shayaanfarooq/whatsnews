@@ -13,6 +13,7 @@ export interface ContentParams {
 export type ContentResponse = NewApiResponse | GuardianContentResponse
 export type SingleArticleResponse = GuardianSingleItem | NewApiResponse
 
+// common Article type for WhatsNews
 export interface Article {
    id: string
    api: NewsSource
@@ -23,4 +24,10 @@ export interface Article {
    content: string
    source: string
    fullStory?: string
+}
+
+// Personal feed preferences
+export interface PersonalFeedPreference {
+   sources: string[]
+   categories: string[]
 }

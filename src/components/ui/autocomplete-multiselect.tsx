@@ -126,7 +126,11 @@ export function MultiSelectCombobox({
                </Command>
                <div className='flex justify-between p-2 border-t border-gray-200'>
                   {multiSelect && (
-                     <Button variant='outline' size='sm' onClick={() => setTempSelectedValues([])}>
+                     <Button
+                        variant='secondary'
+                        size='sm'
+                        onClick={() => setTempSelectedValues([])}
+                     >
                         Clear All
                      </Button>
                   )}

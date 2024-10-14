@@ -19,9 +19,6 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
    const [isImageLoaded, setIsImageLoaded] = useState(false)
    const imgUrl = imageUrl ? imageUrl : backupImage
 
-   if (title.includes('Harris rallies')) {
-      console.log('kamala content', content)
-   }
    return (
       <NavLink to={`/search/${api}?id=${id}`} className={className}>
          <div className={`group cursor-pointer flex flex-col gap-4 justify-between h-full`}>
