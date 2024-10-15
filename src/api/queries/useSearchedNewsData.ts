@@ -2,12 +2,15 @@ import { UseQueryOptions, useQueries } from '@tanstack/react-query'
 
 import { fetchGuardianContent } from '../client/guardianClient'
 import { fetchNewsApiEverything } from '../client/newsApiClient'
+import { fetchNyTimesSearchContent } from '../client/nytimesClient'
 import { convertGuardianContentToArticle } from '../util/guardianUtil'
 import { convertNewsApiEverythingResToAritcle } from '../util/newsApiUtil'
+import { convertNyTimesSearchResToAritcle } from '../util/nytimesUtil'
 import { queryKeys } from '../util/queryKeys'
 import { Article, ContentParams, ContentResponse } from '@/types'
 import { GuardianContentResponse } from '@/types/GuardianApiTypes'
 import { NewApiResponse } from '@/types/NewsApiTypes'
+import { NyTimesResponse } from '@/types/NyTimesApiTypes'
 import { NewsSource, defaultSources } from '@/util/constants'
 
 export const useSearchedNewsData = (sources: string[], params: ContentParams) => {
@@ -32,6 +35,15 @@ export const useSearchedNewsData = (sources: string[], params: ContentParams) =>
                   queryFn: () => fetchGuardianContent(params),
                   select: (data) =>
                      convertGuardianContentToArticle(data as GuardianContentResponse),
+                  enabled: enabled
+               }
+
+            case NewsSource.NyTimes:
+               // ny times api
+               return {
+                  queryKey: [queryKeys.nytimesContent, params],
+                  queryFn: () => fetchNyTimesSearchContent(params),
+                  select: (data) => convertNyTimesSearchResToAritcle(data as NyTimesResponse),
                   enabled: enabled
                }
 

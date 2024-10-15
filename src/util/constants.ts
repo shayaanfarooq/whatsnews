@@ -1,18 +1,25 @@
 // news sources
 export enum NewsSource {
    NewsApi = 'newsapi',
-   Guardian = 'guardian'
+   Guardian = 'guardian',
+   NyTimes = 'nytimes'
 }
 export const newsSourceLabels = {
    [NewsSource.NewsApi]: 'News Api',
-   [NewsSource.Guardian]: 'Guardian'
+   [NewsSource.Guardian]: 'Guardian',
+   [NewsSource.NyTimes]: 'New York Times'
 }
 
-export const defaultSources: string[] = [NewsSource.NewsApi, NewsSource.Guardian]
+export const defaultSources: string[] = [
+   NewsSource.NewsApi,
+   NewsSource.Guardian,
+   NewsSource.NyTimes
+]
 
 // numeric constants
 export const PAGE_SIZE_PER_REQUEST = 10
 export const PAGE_SIZE_FOR_TOP_STORIES = 20
+export const TOP_STORIES_STALE_TIME = 3600000
 
 // tabs
 export enum HomeTab {

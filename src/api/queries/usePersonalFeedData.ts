@@ -3,12 +3,15 @@ import { subDays } from 'date-fns'
 
 import { fetchGuardianContent } from '../client/guardianClient'
 import { fetchNewsApiEverything } from '../client/newsApiClient'
+import { fetchNyTimesSearchContent } from '../client/nytimesClient'
 import { convertGuardianContentToArticle } from '../util/guardianUtil'
 import { convertNewsApiEverythingResToAritcle } from '../util/newsApiUtil'
+import { convertNyTimesSearchResToAritcle } from '../util/nytimesUtil'
 import { queryKeys } from '../util/queryKeys'
 import { Article, ContentParams, ContentResponse, PersonalFeedPreference } from '@/types'
 import { GuardianContentResponse } from '@/types/GuardianApiTypes'
 import { NewApiResponse } from '@/types/NewsApiTypes'
+import { NyTimesResponse as NyTimesResponse } from '@/types/NyTimesApiTypes'
 import { NewsSource, defaultSources } from '@/util/constants'
 
 // basically a category wise parallel search
@@ -41,6 +44,14 @@ export const usePersonalFeedData = ({ sources, categories }: PersonalFeedPrefere
                   queryFn: () => fetchGuardianContent(params),
                   select: (data) =>
                      convertGuardianContentToArticle(data as GuardianContentResponse),
+                  enabled: enabled
+               }
+            case NewsSource.NyTimes:
+               // new york times
+               return {
+                  queryKey: [queryKeys.nytimesPersonalFeed, categories],
+                  queryFn: () => fetchNyTimesSearchContent(params),
+                  select: (data) => convertNyTimesSearchResToAritcle(data as NyTimesResponse),
                   enabled: enabled
                }
 
