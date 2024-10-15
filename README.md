@@ -1,9 +1,14 @@
 <img width="90" alt="image" src="https://github.com/user-attachments/assets/f2fba752-22f5-4c5a-bf0d-4fd566cd1a9f">
 
-
 # WhatsNews - A News Aggregator
 
-**WhatsNews** is a news aggregator built with React, Vite, and TypeScript. The application fetches news articles from multiple sources, including NewsAPI and Guardian API, and displays them in a user-friendly interface.
+**WhatsNews** is a news aggregator built with React, Vite, and TypeScript. The application fetches news articles from multiple sourcesI, and displays them in a user-friendly interface.
+
+#### Sources
+
+-  [News Api Org](https://newsapi.org/)
+-  [The Guardian](https://open-platform.theguardian.com/)
+-  [New York Times](https://developer.nytimes.com/docs/articlesearch-product/1/overview)
 
 ## Features
 
@@ -71,20 +76,21 @@ Ensure you have the following installed:
 6. Open `http://localhost:5731` in your browser to see the app.
 
 ## Folder Structure
-- `src/`
-   - `api/`
-      - `client/` - fetcher functions categories by source api
-      - `queries/` - custom hooks wrapped around react query hooks
-      - `util/` - data parsers dealing with raw api data and params
-   - `assets/`
-   - `atoms/` - jotai atoms for state management
-   - `components/` - common app components
-     - `ui/` - shadcn based reusable components
-   - `routes/` - all pages of the app 
-   - `types/` - typescript type declarations
-   - `util/` - helper functions
-   - ...configs etc
-  
+
+-  `src/`
+   -  `api/`
+      -  `client/` - fetcher functions categories by source api
+      -  `queries/` - custom hooks wrapped around react query hooks
+      -  `util/` - data parsers dealing with raw api data and params
+   -  `assets/`
+   -  `atoms/` - jotai atoms for state management
+   -  `components/` - common app components
+      -  `ui/` - shadcn based reusable components
+   -  `routes/` - all pages of the app
+   -  `types/` - typescript type declarations
+   -  `util/` - helper functions
+   -  ...configs etc
+
 ## Docker Instructions
 
 ### Dockerizing the App
@@ -103,6 +109,7 @@ Ensure you have the following installed:
    docker build \
    --build-arg VITE_NEWS_API_KEY=your_api_key \
    --build-arg VITE_GUARDIAN_API_KEY=your_api_key_2 \
+   --build-arg VITE_NY_TIMES_API_KEY=your_api_key_3 \
    -t whatsnews .
    ```
 4. Run the Docker container:
@@ -111,17 +118,14 @@ Ensure you have the following installed:
    ```
 5. Open `http://localhost:3000` to view the dockerized app.
 
-
-
 ## Screenshots
+
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/88341018-8dca-480a-b55a-fe3b86daf9ab">
 
 <br/><br/>
-   
+
 <img width="1440" alt="Screenshot 2024-10-15 at 3 04 08 AM" src="https://github.com/user-attachments/assets/7cdc1c47-707a-4cdb-81ce-5b6179c4859b">
 
 <br/><br/>
 
 <img width="1440" alt="image" src="https://github.com/user-attachments/assets/83c30cc9-b96e-4e53-962c-f12c6d8a83f8">
-
-

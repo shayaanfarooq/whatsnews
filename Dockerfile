@@ -6,10 +6,12 @@ FROM node:20.18-alpine AS build
 # Define build arguments for environment variables
 ARG VITE_NEWS_API_KEY
 ARG VITE_GUARDIAN_API_KEY
+ARG VITE_NY_TIMES_API_KEY
 
 # Set environment variables during the build process
 ENV VITE_NEWS_API_KEY=$VITE_NEWS_API_KEY
 ENV VITE_GUARDIAN_API_KEY=$VITE_GUARDIAN_API_KEY
+ENV VITE_NY_TIMES_API_KEY=$VITE_NY_TIMES_API_KEY
 
 WORKDIR /app
 
