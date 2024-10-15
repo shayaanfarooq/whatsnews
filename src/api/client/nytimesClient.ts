@@ -6,13 +6,13 @@ import {
    parseToTopStoriesNyTimesParams
 } from '../util/nytimesUtil'
 import { ContentParams } from '@/types'
-import { NYTimesResponse } from '@/types/NyTimesApiTypes'
+import { NyTimesResponse } from '@/types/NyTimesApiTypes'
 
 // list via search
-export const fetchNyTimesEverything = async (params: ContentParams) => {
+export const fetchNyTimesSearchContent = async (params: ContentParams) => {
    const queryString = parseToNyTimesParams(params)
    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?${queryString}`
-   const response = await axios.get<NYTimesResponse>(url)
+   const response = await axios.get<NyTimesResponse>(url)
    return response.data
 }
 
@@ -20,7 +20,7 @@ export const fetchNyTimesEverything = async (params: ContentParams) => {
 export const fetchSingleNyTimesArticle = async (id: string) => {
    const queryString = parseToSingleNyTimesParams(id)
    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?${queryString}`
-   const response = await axios.get<NYTimesResponse>(url)
+   const response = await axios.get<NyTimesResponse>(url)
    return response.data
 }
 
@@ -28,6 +28,6 @@ export const fetchSingleNyTimesArticle = async (id: string) => {
 export const fetchNyTimesTopStories = async () => {
    const queryString = parseToTopStoriesNyTimesParams()
    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?${queryString}`
-   const response = await axios.get<NYTimesResponse>(url)
+   const response = await axios.get<NyTimesResponse>(url)
    return response.data
 }

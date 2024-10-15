@@ -1,5 +1,5 @@
 // Root response type
-export type NYTimesResponse = {
+export type NyTimesResponse = {
    status: string
    copyright: string
    response: {
@@ -95,7 +95,7 @@ type Person = {
    rank: number
 }
 
-export interface NyTimesEverythingParams {
+export interface NyTimesSearchParams {
    'api-key': string
    q?: string
    begin_date?: string

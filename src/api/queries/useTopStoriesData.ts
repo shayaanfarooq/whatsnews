@@ -2,13 +2,16 @@ import { UseQueryOptions, useQueries } from '@tanstack/react-query'
 
 import { fetchGuardianTopStories } from '../client/guardianClient'
 import { fetchNewsApiTopStories } from '../client/newsApiClient'
+import { fetchNyTimesTopStories } from '../client/nytimesClient'
 import { convertGuardianContentToArticle } from '../util/guardianUtil'
 import { convertNewsApiEverythingResToAritcle } from '../util/newsApiUtil'
+import { convertNyTimesSearchResToAritcle } from '../util/nytimesUtil'
 import { queryKeys } from '../util/queryKeys'
 import { Article, ContentResponse } from '@/types'
 import { GuardianContentResponse } from '@/types/GuardianApiTypes'
 import { NewApiResponse } from '@/types/NewsApiTypes'
-import { NewsSource, defaultSources } from '@/util/constants'
+import { NyTimesResponse } from '@/types/NyTimesApiTypes'
+import { NewsSource, TOP_STORIES_STALE_TIME, defaultSources } from '@/util/constants'
 
 // top stories parallel dynamic queries
 export const useTopStoriesData = () => {
@@ -22,7 +25,7 @@ export const useTopStoriesData = () => {
                      queryKey: [queryKeys.newsApiTopStories],
                      queryFn: () => fetchNewsApiTopStories(),
                      select: (data) => convertNewsApiEverythingResToAritcle(data as NewApiResponse),
-                     staleTime: 3600000
+                     staleTime: TOP_STORIES_STALE_TIME
                   }
 
                case NewsSource.Guardian:
@@ -32,7 +35,16 @@ export const useTopStoriesData = () => {
                      queryFn: () => fetchGuardianTopStories(),
                      select: (data) =>
                         convertGuardianContentToArticle(data as GuardianContentResponse),
-                     staleTime: 3600000
+                     staleTime: TOP_STORIES_STALE_TIME
+                  }
+
+               case NewsSource.NyTimes:
+                  // news api
+                  return {
+                     queryKey: [queryKeys.nytimesTopStories],
+                     queryFn: () => fetchNyTimesTopStories(),
+                     select: (data) => convertNyTimesSearchResToAritcle(data as NyTimesResponse),
+                     staleTime: TOP_STORIES_STALE_TIME
                   }
 
                default:
