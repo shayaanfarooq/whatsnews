@@ -1,5 +1,6 @@
 import { GuardianContentResponse, GuardianSingleItem } from './GuardianApiTypes'
 import { NewApiResponse } from './NewsApiTypes'
+import { NYTimesResponse } from './NyTimesApiTypes'
 import { NewsSource } from '@/util/constants'
 
 /* 
@@ -16,8 +17,8 @@ export interface ContentParams {
 }
 
 // unionised for all apis to use in use query custom hooks
-export type ContentResponse = NewApiResponse | GuardianContentResponse
-export type SingleArticleResponse = GuardianSingleItem | NewApiResponse
+export type ContentResponse = NewApiResponse | GuardianContentResponse | NYTimesResponse
+export type SingleArticleResponse = GuardianSingleItem | NewApiResponse | NYTimesResponse
 
 // common Article type for WhatsNews
 export interface Article {
