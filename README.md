@@ -2,7 +2,7 @@
 
 # WhatsNews - A News Aggregator
 
-**WhatsNews** is a news aggregator built with React, Vite, and TypeScript. The application fetches news articles from multiple sourcesI, and displays them in a user-friendly interface.
+**WhatsNews** is a news aggregator built with React, Vite, and TypeScript. The application fetches news articles from multiple sources, and displays them in a user-friendly interface.
 
 #### Sources
 
@@ -12,7 +12,7 @@
 
 ## Features
 
--  Fetches news articles from multiple sources (NewsAPI and The Guardian API as of now).
+-  Fetches news articles from multiple sources (NewsAPI, The Guardian, and NY Times API as of now).
 -  A responsive UI to browse articles by categories or news sources.
 -  Searching and filtering articles
 -  Top strories feed
